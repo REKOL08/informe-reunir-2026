@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Informe de Gestión REUNIR 2026</title>
+<meta name="description" content="Informe de gestión 2026 de la Red de Unidades de Información de Risaralda y Eje Cafetero (REUNIR).">
+<link rel="icon" href="img/logo.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Rubik:wght@500;700&display=swap">
+<style>
+:root{
+  --cream:#F7EFE3;--cream2:#EFE3D0;--mag:#C2276B;--pink:#E8438A;--pinkl:#FBE3EE;
+  --green:#6DB33F;--dgreen:#3F7A1B;--greenl:#E7F3DA;--ink:#2F2F2F;--soft:#4A4A4A;--white:#fffdf9;
+  --head:'Rubik','Nunito Sans',Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#1f1a1c;overflow:hidden;font-family:'Nunito Sans','Segoe UI',Arial,sans-serif;color:var(--ink)}
+#viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#stage{width:1280px;height:720px;position:relative;transform-origin:center center;flex:none;overflow:hidden;background:var(--cream);border-radius:6px}
+/* slides */
+.slide{position:absolute;inset:0;padding:64px 72px 70px;opacity:0;visibility:hidden;transition:opacity .55s ease,visibility .55s;
+  background:
+   radial-gradient(900px 520px at 8% 0%,#fbdbe9 0%,transparent 60%),
+   radial-gradient(800px 500px at 100% 100%,#e4f2d5 0%,transparent 60%),
+   linear-gradient(135deg,#f9f2e8,#f5ecdf)}
+.slide.on{opacity:1;visibility:visible;z-index:2}
+.slide.alt{background:
+   radial-gradient(800px 520px at 100% 0%,#fbdbe9 0%,transparent 60%),
+   radial-gradient(900px 520px at 0% 100%,#e4f2d5 0%,transparent 60%),
+   linear-gradient(135deg,#faf4ea,#f6eee2)}
+.a{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--d,0)*1s)}
+.slide.on .a{opacity:1;transform:none}
+.a.l{transform:translateX(-40px)}.a.r{transform:translateX(40px)}.a.z{transform:scale(.88)}
+.slide.on .a.l,.slide.on .a.r,.slide.on .a.z{transform:none}
+/* typographic */
+.kicker{font-family:var(--head);font-weight:500;letter-spacing:.14em;text-transform:uppercase;font-size:14px;color:var(--mag)}
+h1,h2,h3{font-family:var(--head);font-weight:700;line-height:1.05}
+h2{font-size:42px;margin:8px 0 6px}
+h2 em,h1 em{font-style:normal;color:var(--mag)}
+.lead{font-size:19px;line-height:1.5;color:var(--soft)}
+.pill{display:inline-block;padding:9px 20px;border-radius:30px;font-family:var(--head);font-weight:500;font-size:15px;color:#fff}
+.pill.g{background:var(--green);color:#1f3a0d}.pill.m{background:var(--mag)}.pill.w{background:#fff;color:var(--mag);border:2px solid var(--pinkl)}
+.card{background:rgba(255,253,249,.92);border:1px solid #f0dfe6;border-radius:20px;box-shadow:0 10px 30px rgba(194,39,107,.08);padding:20px 22px}
+.card h3{font-size:19px;margin-bottom:6px}
+.card p{font-size:15px;line-height:1.45;color:var(--soft)}
+.ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:22px;background:var(--pinkl);margin-bottom:10px}
+.ic.g{background:var(--greenl)}
+img[data-z]{cursor:zoom-in}
+.frame{border-radius:16px;overflow:hidden;box-shadow:0 14px 34px rgba(60,30,50,.18);border:5px solid #fff;background:#fff}
+.frame img{display:block;width:100%;height:100%;object-fit:cover}
+/* chrome */
+.brand{position:absolute;left:72px;bottom:22px;display:flex;align-items:center;gap:12px;z-index:5;font-size:13px;color:var(--soft)}
+.logo{width:92px;height:27px;overflow:hidden;position:relative}
+.logo img,.big-logo img{mix-blend-mode:multiply}.logo img{position:absolute;left:-3px;top:-3px;width:calc(100% + 6px);height:calc(100% + 6px);object-fit:fill}
+#nav{position:absolute;right:48px;bottom:16px;display:flex;align-items:center;gap:10px;z-index:20}
+#dots{display:flex;gap:7px}
+#dots i{width:8px;height:8px;border-radius:50%;background:#dfcfc2;cursor:pointer;transition:.3s}
+#dots i.on{width:26px;border-radius:8px;background:var(--mag)}
+.nb{width:38px;height:38px;border-radius:50%;border:0;background:#fff;color:var(--mag);font-size:20px;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.12);transition:.2s}
+.nb:hover{background:var(--mag);color:#fff}
+#bar{position:absolute;left:0;top:0;height:5px;background:linear-gradient(90deg,var(--green),var(--pink));z-index:30;transition:width .5s}
+#num{position:absolute;right:48px;top:22px;z-index:20;font-family:var(--head);font-size:13px;color:var(--soft);letter-spacing:.1em}
+#petals{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+.petal{position:absolute;top:-30px;width:14px;height:10px;background:var(--pink);opacity:.5;border-radius:80% 0 80% 0;animation:fall linear infinite}
+@keyframes fall{to{transform:translate(var(--x),780px) rotate(520deg)}}
+.slide{z-index:0}
+/* lightbox */
+#lb{position:fixed;inset:0;background:rgba(30,15,25,.86);display:none;align-items:center;justify-content:center;z-index:100;cursor:zoom-out}
+#lb.on{display:flex}
+#lb img{max-width:92vw;max-height:90vh;border-radius:10px;box-shadow:0 20px 60px #000;animation:pop .3s ease}
+@keyframes pop{from{transform:scale(.9);opacity:0}}
+#lb button{position:absolute;top:50%;width:48px;height:48px;border-radius:50%;border:0;font-size:24px;background:#fff;color:var(--mag);cursor:pointer}
+#lbp{left:20px}#lbn{right:20px}
+/* ------- slide specifics ------- */
+.cover{display:flex;align-items:center;gap:30px}
+.cover .txt{flex:1.1}
+.cover h1{font-size:76px;margin:14px 0 18px}
+.cover .big-logo{width:290px;height:85px;overflow:hidden;position:relative;margin-bottom:34px}
+.cover .big-logo img{position:absolute;left:-6px;top:-6px;width:calc(100% + 12px);height:calc(100% + 12px)}
+.book{flex:.9;display:grid;place-items:center;position:relative;height:520px}
+.book .pg{position:absolute;width:340px;height:420px;border-radius:14px 26px 26px 14px;background-color:#fffaf0;border:3px solid #f1dfe5;box-shadow:0 24px 60px rgba(194,39,107,.25);
+  background-image:repeating-linear-gradient(transparent 0 38px,#eadfd4 38px 39px)}
+.book .cv{position:absolute;width:350px;height:430px;border-radius:16px 28px 28px 16px;background:var(--mag);transform:translate(10px,10px)}
+.book .bk{position:absolute;top:50px;right:105px;width:26px;height:110px;background:var(--green);clip-path:polygon(0 0,100% 0,100% 100%,50% 82%,0 100%);z-index:3}
+.flower{position:absolute;font-size:88px;filter:drop-shadow(0 8px 10px rgba(194,39,107,.3));animation:sway 5s ease-in-out infinite}
+@keyframes sway{50%{transform:rotate(10deg) translateY(-8px)}}
+.toc{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
+.toc .card{cursor:pointer;transition:.25s;display:flex;gap:16px;align-items:center;padding:22px}
+.toc .card:hover{transform:translateY(-6px);border-color:var(--pink)}
+.toc b{font-family:var(--head);font-size:36px;color:var(--pink);min-width:50px}
+.toc h3{font-size:19px}.toc p{font-size:14px}
+.two{display:grid;gap:30px;grid-template-columns:1fr 1fr}
+.act{display:flex;gap:14px;align-items:flex-start;padding:13px 16px}
+.act .n{flex:none;width:34px;height:34px;border-radius:50%;background:var(--mag);color:#fff;display:grid;place-items:center;font-family:var(--head)}
+.act h3{font-size:15.5px;margin-bottom:3px;line-height:1.2}.act small{font-size:13px;color:var(--mag);font-weight:700}
+.rings{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:18px}
+.ring{text-align:center;padding:16px 12px 14px}
+.ring svg{width:112px;height:112px;transform:rotate(-90deg)}
+.ring .bg{fill:none;stroke:#f0e2e8;stroke-width:11}
+.ring .fg{fill:none;stroke:var(--green);stroke-width:11;stroke-linecap:round;stroke-dasharray:326.7;stroke-dashoffset:326.7;transition:stroke-dashoffset 1.4s cubic-bezier(.2,.8,.2,1),stroke .6s}
+.ring .pc{margin-top:-78px;height:78px;font-family:var(--head);font-weight:700;font-size:24px;display:grid;place-items:center}.ring .pc b{font-weight:700}
+.ring h3{font-size:14.5px;margin-top:6px;min-height:52px;line-height:1.2}
+.ring p{font-size:12.5px;line-height:1.35;min-height:92px;color:var(--soft);margin-top:6px}
+.tog{display:inline-flex;background:#fff;border-radius:30px;padding:5px;box-shadow:0 4px 14px rgba(0,0,0,.08)}
+.tog button{border:0;background:transparent;font-family:var(--head);font-weight:500;padding:9px 22px;border-radius:24px;cursor:pointer;color:var(--soft);font-size:14px;transition:.25s}
+.tog button.on{background:var(--mag);color:#fff}
+.polas{position:relative;height:540px}
+.pola{position:absolute;background:#fff;padding:9px 9px 9px;border-radius:6px;box-shadow:0 14px 30px rgba(0,0,0,.2);transition:.3s;transform:rotate(var(--r))}
+.pola img{display:block;object-fit:cover}
+.pola:hover{transform:rotate(0) scale(1.05);z-index:9}
+.fichas{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
+.ficha{text-align:left}
+.ficha small{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mag);font-weight:700}
+.ficha b{display:block;font-family:var(--head);font-size:21px;margin-top:6px;line-height:1.15}
+.req{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.req .card{padding:16px 18px}.req h3{font-size:17px}.req p{font-size:13.5px}
+.agenda{display:grid;grid-template-columns:400px 1fr;gap:26px;margin-top:14px}
+.tl{display:flex;flex-direction:column;gap:6px}
+.tl button{border:0;text-align:left;cursor:pointer;background:rgba(255,255,255,.7);border-radius:14px;padding:8px 14px;display:flex;gap:12px;align-items:center;font-family:inherit;transition:.25s;border-left:5px solid transparent}
+.tl button:hover{background:#fff}
+.tl button.on{background:#fff;border-left-color:var(--mag);box-shadow:0 8px 20px rgba(194,39,107,.14);transform:translateX(8px)}
+.tl .t{font-family:var(--head);font-weight:500;font-size:12px;color:var(--mag);min-width:92px;line-height:1.2}
+.tl .n{font-weight:700;font-size:14px;line-height:1.2}
+.det{padding:30px 34px;min-height:462px;display:flex;flex-direction:column;justify-content:center}
+.det .tm{font-family:var(--head);font-size:34px;color:var(--mag)}
+.det h3{font-size:30px;margin:8px 0 14px}
+.det .who{display:inline-block;background:var(--greenl);color:var(--dgreen);border-radius:12px;padding:8px 14px;font-weight:700;font-size:15px;margin:2px 6px 8px 0}
+.det p{font-size:18px;line-height:1.55;color:var(--soft)}
+.det.sw{animation:sw .45s ease}
+@keyframes sw{from{opacity:0;transform:translateX(30px)}}
+.spk{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:22px}
+.spk .card{padding:22px 20px;min-height:340px;transition:.3s}
+.spk .card:hover{transform:translateY(-8px)}
+.av{width:78px;height:78px;border-radius:50%;display:grid;place-items:center;font-family:var(--head);font-size:30px;color:#fff;margin-bottom:14px;background:linear-gradient(135deg,var(--mag),var(--pink))}
+.av.g{background:linear-gradient(135deg,var(--dgreen),var(--green))}
+.spk .hr{font-size:12.5px;font-weight:700;color:var(--mag);margin-bottom:6px}
+.spk h3{font-size:20px;margin-bottom:10px}
+.spk .tp{font-size:14.5px;line-height:1.4;font-weight:700;margin-bottom:8px}
+.chips{display:flex;flex-wrap:wrap;gap:9px}
+.chip{background:#fff;border:1px solid #efdde5;border-radius:30px;padding:8px 15px;font-size:14px;font-weight:600;transition:.25s}
+.chip:hover{background:var(--pinkl);transform:translateY(-3px)}
+.counter{font-family:var(--head);font-weight:700;color:var(--mag);line-height:.9}
+.divider{display:flex;flex-direction:column;justify-content:center;height:100%}
+.divider h1{font-size:84px;margin:16px 0}
+.row5{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:20px}
+.poster{border-radius:14px;overflow:hidden;background:#fff;border:5px solid #fff;box-shadow:0 12px 28px rgba(0,0,0,.15);transition:.35s;display:block}
+.poster img{width:100%;display:block}
+.poster:hover{transform:translateY(-10px) rotate(-1.5deg)}
+.cap{font-size:13px;color:var(--soft);text-align:center;margin-top:10px;font-weight:600}
+table.tb{width:100%;border-collapse:separate;border-spacing:0 5px;font-size:14.5px}
+table.tb th{background:var(--mag);color:#fff;font-family:var(--head);font-weight:500;padding:9px 14px;text-align:left}
+table.tb th:first-child{border-radius:12px 0 0 12px}table.tb th:last-child{border-radius:0 12px 12px 0}
+table.tb td{background:rgba(255,255,255,.9);padding:7px 14px}
+table.tb td:first-child{border-radius:12px 0 0 12px;font-weight:700;color:var(--mag)}table.tb td:last-child{border-radius:0 12px 12px 0;font-weight:600}
+table.tb tr.a td{opacity:1}
+.mosaic{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.mosaic .frame{height:150px}
+.days{display:flex;gap:10px;margin:12px 0 16px}
+.days button{border:0;cursor:pointer;background:#fff;border-radius:16px;padding:10px 20px;font-family:var(--head);font-weight:500;color:var(--soft);font-size:15px;box-shadow:0 4px 12px rgba(0,0,0,.07);transition:.25s}
+.days button b{display:block;font-size:24px;color:var(--mag)}
+.days button.on{background:var(--mag);color:#fff}.days button.on b{color:#fff}
+.prog{display:grid;grid-template-columns:300px 1fr;gap:28px}
+.prog .poster{height:420px}.prog .poster img{height:100%;object-fit:contain;background:#fff}
+.ev{display:flex;flex-direction:column;gap:10px;animation:sw .45s ease}
+.ev .card{padding:12px 18px}
+.ev h3{font-size:16px;line-height:1.25}
+.ev .ty{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--dgreen)}
+.ev p{font-size:13.5px}
+.gal{display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(2,1fr);gap:12px;height:452px;margin-top:16px}
+.gal .frame{height:100%;transition:.35s}.gal .frame:hover{transform:scale(1.04) rotate(-.8deg);z-index:5}
+.bars{display:flex;flex-direction:column;gap:20px;margin-top:20px}
+.bar{display:grid;grid-template-columns:260px 1fr 100px;align-items:center;gap:16px;font-weight:700;font-size:17px}
+.bar .tr{height:34px;border-radius:20px;background:#f0e2e8;overflow:hidden}
+.bar .fl{height:100%;width:0;border-radius:20px;background:linear-gradient(90deg,var(--pink),var(--mag));transition:width 1.6s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--d)*1s + .4s)}
+.slide.on .bar .fl{width:var(--w)}
+.bar .vv{font-family:var(--head);font-size:26px;color:var(--mag);text-align:right}
+.tot{display:flex;align-items:center;gap:28px;margin-top:24px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+.stat{text-align:center;padding:26px 16px}
+.stat .counter{font-size:58px}
+.stat h3{font-size:17px;margin-top:10px;color:var(--soft);font-weight:600;font-family:'Nunito Sans'}
+.quote{margin-top:22px;font-family:var(--head);font-size:24px;color:var(--dgreen)}
+.flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:14px 0}
+.flow span.ar{color:var(--pink);font-size:20px}
+.btn{display:inline-block;background:var(--mag);color:#fff;text-decoration:none;font-family:var(--head);font-weight:500;padding:13px 26px;border-radius:30px;transition:.25s;box-shadow:0 10px 24px rgba(194,39,107,.3)}
+.btn:hover{transform:translateY(-3px);background:#a81e5a}
+.endk{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
+.endk .card{text-align:center;padding:20px 10px}.endk .counter{font-size:46px}
+.endk h3{font-size:14px;font-weight:600;font-family:'Nunito Sans';margin-top:8px;color:var(--soft)}
+/* print -> PDF */
+body.print{overflow:visible;background:#fff}
+body.print #viewport{position:static;display:block}
+body.print #stage{transform:none!important;height:auto;overflow:visible;border-radius:0;background:#fff}
+body.print .slide{position:relative;opacity:1;visibility:visible;height:720px;width:1280px;page-break-after:always;break-after:page;overflow:hidden}
+body.print .a{opacity:1!important;transform:none!important;transition:none!important}
+body.print .bar .fl{width:var(--w);transition:none}
+body.print #pdf,body.print #nav,body.print #bar,body.print #num,body.print #petals,body.print #lb{display:none!important}
+body.print .brand{position:absolute}
+@page{size:1280px 720px;margin:0}
+@media print{body{overflow:visible;background:#fff}}
+</style>
+</head>
+<body>
+<div id="viewport"><div id="stage">
+<div id="bar"></div><div id="num"></div><div id="petals"></div>
+
+<!-- 1 PORTADA -->
+<section class="slide" data-t="Portada">
+  <div class="cover" style="height:100%">
+    <div class="txt">
+      <div class="big-logo a" style="--d:.1"><img src="img/logo.jpeg" alt="REUNIR"></div>
+      <div class="kicker a" style="--d:.25">Red de Unidades de Información · Informe de gestión</div>
+      <h1 class="a" style="--d:.4">Informe de<br>gestión <em>2026</em></h1>
+      <p class="lead a" style="--d:.6">Foro de Gamificación, Feria del Libro de Pereira y el nuevo Sistema de Préstamo Interbibliotecario de Risaralda y el Eje Cafetero.</p>
+      <div style="margin-top:26px;display:flex;gap:12px" class="a" style="--d:.8"><span class="pill g">Mesa Biblioteca REUNIR</span><span class="pill m">Noviembre 2026</span></div>
+    </div>
+    <div class="book a z" style="--d:.5">
+      <div class="cv"></div><div class="pg"></div><div class="bk"></div>
+      <div class="flower" style="left:6%;top:6%">🌸</div>
+      <div class="flower" style="right:2%;bottom:6%;font-size:110px;animation-delay:1.5s">🌺</div>
+      <div style="position:relative;z-index:2;text-align:center;font-family:var(--head);color:var(--mag);font-size:26px;line-height:1.3;padding:0 70px">Compartir<br>conocimiento,<br><span style="color:var(--dgreen)">conectar<br>comunidades</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 CONTENIDO -->
+<section class="slide alt" data-t="Contenido">
+  <div class="kicker a">Recorrido</div>
+  <h2 class="a" style="--d:.1">¿Qué vamos a <em>contar</em>?</h2>
+  <p class="lead a" style="--d:.2">Haz clic en cualquier tarjeta para saltar a ese momento del año.</p>
+  <div class="toc">
+    <div class="card a" style="--d:.3" data-go="2"><b>01</b><div><h3>Plan de acción 2026</h3><p>Actividades, avance y mesa responsable.</p></div></div>
+    <div class="card a" style="--d:.4" data-go="4"><b>02</b><div><h3>Nueva coordinación</h3><p>21 de mayo: relevo de Coordinación y Secretaría.</p></div></div>
+    <div class="card a" style="--d:.5" data-go="5"><b>03</b><div><h3>III Foro de Gamificación</h3><p>Pereira · agenda, ponentes y asistentes.</p></div></div>
+    <div class="card a" style="--d:.6" data-go="12"><b>04</b><div><h3>Feria del Libro de Pereira</h3><p>Piezas, stand, programación y resultados.</p></div></div>
+    <div class="card a" style="--d:.7" data-go="18"><b>05</b><div><h3>Paisaje, Café y Libro</h3><p>Cifras de la feria con la Cámara de Comercio.</p></div></div>
+    <div class="card a" style="--d:.8" data-go="19"><b>06</b><div><h3>Préstamo interbibliotecario</h3><p>El sistema que conecta a la Red REUNIR.</p></div></div>
+  </div>
+</section>
+
+<!-- 3 PLAN DE ACCION -->
+<section class="slide" data-t="Plan de acción">
+  <div class="kicker a">Plan de acción a desarrollarse · 2026</div>
+  <h2 class="a" style="--d:.1">Cinco actividades para <em>fortalecer la red</em></h2>
+  <div class="two" style="grid-template-columns:1.08fr .92fr;margin-top:14px;align-items:start">
+    <div class="a l" style="--d:.3">
+      <div class="frame"><img src="img/i1.png" data-z data-g="plan" alt="Matriz del plan de acción 2026 - mesa Biblioteca"></div>
+      <p class="cap">Matriz del plan de acción 2026 · Mesa Biblioteca REUNIR (clic para ampliar)</p>
+      <div class="card" style="margin-top:12px;padding:14px 18px"><p><b>Coordinación de la mesa:</b> Yudi Mayerly Ariza López (febrero – abril 2026) y Nelly Herrera Vargas (mayo – noviembre 2026).</p></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:9px">
+      <div class="card act a r" style="--d:.4"><div class="n">1</div><div><h3>Solución integral para el préstamo interbibliotecario</h3><small>Mayo – julio</small></div></div>
+      <div class="card act a r" style="--d:.5"><div class="n">2</div><div><h3>Jornadas de formación conjunta · REUNIR, Asouniesca, Rebime y Embies</h3><small>Abril – mayo / agosto – noviembre</small></div></div>
+      <div class="card act a r" style="--d:.6"><div class="n">3</div><div><h3>Participación en la Feria del Libro de Pereira</h3><small>Octubre (programada)</small></div></div>
+      <div class="card act a r" style="--d:.7"><div class="n">4</div><div><h3>III Foro de Bibliotecas REUNIR con estrategias de gamificación</h3><small>Agosto (programado)</small></div></div>
+      <div class="card act a r" style="--d:.8"><div class="n">5</div><div><h3>Diagnóstico de recursos y capacidades bibliotecarias – 2025</h3><small>Junio – julio</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 DESARROLLO -->
+<section class="slide alt" data-t="Desarrollo del plan">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end">
+    <div><div class="kicker a">Desarrollo del plan de acción 2026</div><h2 class="a" style="--d:.1">Porcentaje de <em>cumplimiento</em></h2></div>
+    <div class="tog a" style="--d:.3" id="tog"><button class="on" data-p="0">Junio 2026</button><button data-p="1">Noviembre 2026</button></div>
+  </div>
+  <div class="rings" id="rings"></div>
+  <div style="display:flex;align-items:center;gap:18px;margin-top:14px" class="a" style="--d:1">
+    <div class="frame" style="width:210px;height:100px;flex:none"><img src="img/i2.png" data-z data-g="dev" alt="Captura del seguimiento"></div>
+    <p class="lead" style="font-size:15px">Fuente: captura del seguimiento del plan de acción (clic para ampliar). Alternando entre <b>junio</b> y <b>noviembre</b> se ve cómo avanzó cada actividad de la mesa.</p>
+  </div>
+</section>
+
+<!-- 5 NUEVA COORDINACION -->
+<section class="slide" data-t="Nueva coordinación">
+  <div class="two" style="grid-template-columns:.8fr 1.2fr;height:100%;align-items:center">
+    <div>
+      <div class="kicker a">21 de mayo · relevo</div>
+      <h2 class="a" style="--d:.1;font-size:46px">Nueva <em>Coordinación</em> y Secretaría REUNIR</h2>
+      <p class="lead a" style="--d:.3;margin-top:14px">El <b>21 de mayo</b> se asume la nueva Coordinación y Secretario de REUNIR. La red reconoce con certificado el liderazgo, compromiso y capacidad para fortalecer el trabajo colaborativo, el acceso a la información y el desarrollo de nuestras comunidades.</p>
+      <div style="margin-top:22px;display:flex;flex-direction:column;gap:10px;align-items:flex-start" class="a"><span class="pill g">Nelly Herrera Vargas</span><span class="pill w">Coordinación de Red de Bibliotecas</span></div>
+    </div>
+    <div class="polas">
+      <div class="pola a z" style="--d:.3;--r:-5deg;left:0;top:20px"><img data-z data-g="co" src="img/i3.png" width="250" height="330" alt="Entrega de certificados"></div>
+      <div class="pola a z" style="--d:.5;--r:4deg;left:250px;top:0"><img data-z data-g="co" src="img/i5.png" width="300" height="225" alt="Certificado de coordinación"></div>
+      <div class="pola a z" style="--d:.7;--r:-3deg;left:90px;top:290px"><img data-z data-g="co" src="img/i4.png" width="290" height="180" alt="Encuentro REUNIR"></div>
+      <div class="pola a z" style="--d:.9;--r:5deg;left:380px;top:250px"><img data-z data-g="co" src="img/i6.png" width="250" height="210" alt="Equipo REUNIR"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 FORO FICHA -->
+<section class="slide alt" data-t="III Foro de Gamificación">
+  <div class="kicker a">Mesa Biblioteca · Foro REUNIR</div>
+  <h2 class="a" style="--d:.1">III Foro de <em>Gamificación</em></h2>
+  <p class="lead a" style="--d:.2;max-width:900px">Se comenzó a gestionar todo lo concerniente al desarrollo del Foro: preparación de ponentes, logística, lugar, fechas, editoriales invitadas y formato de inscripción, con la temática en Gamificación.</p>
+  <div class="fichas">
+    <div class="card ficha a z" style="--d:.3"><div class="ic">🎮</div><small>Nombre del evento</small><b>III Foro de Gamificación</b></div>
+    <div class="card ficha a z" style="--d:.4"><div class="ic g">🤝</div><small>Tipo de evento</small><b>Foro · REUNIR</b></div>
+    <div class="card ficha a z" style="--d:.5"><div class="ic">💡</div><small>Tema</small><b>Gamificación</b></div>
+    <div class="card ficha a z" style="--d:.6"><div class="ic g">📍</div><small>Lugar</small><b>Biblioteca Otto Morales Benítez</b></div>
+    <div class="card ficha a z" style="--d:.7"><div class="ic">📅</div><small>Fecha</small><b>7 de octubre de 2026</b></div>
+    <div class="card ficha a z" style="--d:.8"><div class="ic g">⏰</div><small>Hora</small><b>9:00 a. m.</b></div>
+    <div class="card ficha a z" style="--d:.9"><div class="ic">🏛️</div><small>Sede / Seccional</small><b>Pereira</b></div>
+    <div class="card ficha a z" style="--d:1"><div class="ic g">👥</div><small>Asistentes</small><b>24 personas</b></div>
+  </div>
+  <div class="a" style="--d:1.2;margin-top:22px;display:flex;gap:10px"><span class="pill g">Transmisión por YouTube</span><span class="pill m">Conferencias · talleres · mesas curriculares</span></div>
+</section>
+
+<!-- 7 OBJETIVO -->
+<section class="slide" data-t="Objetivo del foro">
+  <div class="kicker a">Descripción de la actividad</div>
+  <h2 class="a" style="--d:.1">Aprender <em>jugando</em>, con ética y creatividad</h2>
+  <div class="two" style="margin-top:22px">
+    <div class="card a l" style="--d:.3;padding:30px"><div class="ic">🎯</div><h3 style="font-size:26px;color:var(--mag)">Objetivo</h3><p style="font-size:17.5px;line-height:1.6;margin-top:10px">Promover el conocimiento y la aplicación de estrategias de gamificación en los procesos educativos mediante conferencias, talleres prácticos y espacios de interacción, orientados al diseño de experiencias de aprendizaje innovadoras, éticas e interactivas que fortalezcan la motivación, la creatividad y la participación de los estudiantes.</p></div>
+    <div class="card a r" style="--d:.5;padding:30px"><div class="ic g">📖</div><h3 style="font-size:26px;color:var(--dgreen)">Introducción</h3><p style="font-size:16px;line-height:1.55;margin-top:10px">La gamificación se ha convertido en una estrategia innovadora dentro del ámbito educativo, al incorporar elementos del juego en la enseñanza para fomentar la motivación, la participación activa y el desarrollo de competencias.<br><br>El evento generó un espacio de formación, reflexión e intercambio sobre herramientas digitales y recursos educativos, mediante conferencias, talleres y visitas a las mesas curriculares, desde una perspectiva ética y pedagógica.</p></div>
+  </div>
+</section>
+
+<!-- 8 REQUERIMIENTOS -->
+<section class="slide alt" data-t="Requerimientos">
+  <div class="kicker a">Lo que hizo posible el foro</div>
+  <h2 class="a" style="--d:.1"><em>Requerimientos</em> del evento</h2>
+  <div class="req">
+    <div class="card a z" style="--d:.2"><div class="ic">🧑‍🤝‍🧑</div><h3>Recursos humanos</h3><p>Equipo organizador, personal de apoyo logístico, docentes, conferencistas, talleristas y responsables de las mesas curriculares.</p></div>
+    <div class="card a z" style="--d:.3"><div class="ic g">💻</div><h3>Recursos tecnológicos</h3><p>Computador, video beam o pantalla, sonido, micrófonos, internet, tomas de corriente y transmisión del evento por YouTube.</p></div>
+    <div class="card a z" style="--d:.4"><div class="ic">🏢</div><h3>Recursos físicos</h3><p>Sala principal, espacios para los talleres y mesas.</p></div>
+    <div class="card a z" style="--d:.5"><div class="ic g">📚</div><h3>Materiales pedagógicos</h3><p>Guías de trabajo, presentaciones, recursos educativos físicos, materiales para actividades prácticas y herramientas digitales de gamificación.</p></div>
+    <div class="card a z" style="--d:.6"><div class="ic">📋</div><h3>Recursos logísticos</h3><p>Registro de asistentes, señalización de espacios, control de horarios, organización de los recesos y coordinación de actividades.</p></div>
+    <div class="card a z" style="--d:.7"><div class="ic g">📣</div><h3>Comunicación y refrigerios</h3><p>Agenda del evento, piezas informativas, identificaciones, materiales de divulgación y refrigerios.</p></div>
+  </div>
+</section>
+
+<!-- 9 AFICHES -->
+<section class="slide" data-t="Piezas del foro">
+  <div class="two" style="grid-template-columns:1fr auto auto;align-items:center;height:100%;gap:36px">
+    <div>
+      <div class="kicker a">Piezas de comunicación</div>
+      <h2 class="a" style="--d:.1;font-size:44px">Una invitación para <em>jugar y aprender</em></h2>
+      <p class="lead a" style="--d:.3;margin-top:14px">«Jugar también es aprender»: la gamificación como estrategia para bibliotecas más vivas, inclusivas y conectadas, dirigida a docentes, bibliotecarios, estudiantes y público interesado.</p>
+      <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap" class="a" style="--d:.5"><span class="pill g">Agenda del evento</span><span class="pill m">Invitación</span></div>
+    </div>
+    <div class="poster a z" style="--d:.4;width:300px"><img data-z data-g="foro" src="img/i7.png" alt="Agenda del III Foro"></div>
+    <div class="poster a z" style="--d:.6;width:300px"><img data-z data-g="foro" src="img/i8.png" alt="Invitación al III Foro"></div>
+  </div>
+</section>
+
+<!-- 10 AGENDA -->
+<section class="slide alt" data-t="Agenda del foro">
+  <div class="kicker a">Desarrollo del evento</div>
+  <h2 class="a" style="--d:.1;font-size:38px">Una jornada <em>de 8:00 a. m. a 5:00 p. m.</em></h2>
+  <div class="agenda">
+    <div class="tl a l" style="--d:.2" id="tl"></div>
+    <div class="card det a r" style="--d:.3" id="det"></div>
+  </div>
+</section>
+
+<!-- 11 PONENTES -->
+<section class="slide" data-t="Ponentes">
+  <div class="kicker a">Voces del foro</div>
+  <h2 class="a" style="--d:.1">Conferencistas y <em>talleristas</em></h2>
+  <div class="spk">
+    <div class="card a z" style="--d:.2"><div class="av">M</div><div class="hr">9:00 – 10:00 a. m. · Conferencia inaugural</div><h3>Mauricio Alexander Moreno Cano</h3><div class="tp">Gamificar desde la ética y la moral</div><p>Principios éticos y morales en el diseño de experiencias educativas gamificadas y uso responsable del juego.</p></div>
+    <div class="card a z" style="--d:.35"><div class="av g">L</div><div class="hr">10:15 a. m. – 12:00 m. · Taller matutino</div><h3>Lisandro Navarro</h3><div class="tp">Tech Learning</div><p>Exploración y aplicación de estrategias de gamificación: herramientas, metodologías y posibilidades de implementación.</p></div>
+    <div class="card a z" style="--d:.5"><div class="av">K</div><div class="hr">3:00 – 3:45 p. m. · Conferencia-taller</div><h3>Kadier Torres Molina</h3><div class="tp">Programa tu propia aventura: diseñando experiencias educativas gamificadas con Gameproof</div></div>
+    <div class="card a z" style="--d:.65"><div class="av g">J</div><div class="hr">4:00 – 5:00 p. m. · Conferencia de cierre</div><h3>Jorge Mario Madina</h3><div class="tp">Aprendizaje interactivo: diseño de juegos educativos con eXeLearning</div><p>Recursos y juegos educativos interactivos para apoyar la comprensión de conceptos.</p></div>
+  </div>
+</section>
+
+<!-- 12 MATERIAL + ASISTENTES -->
+<section class="slide alt" data-t="Material y asistentes">
+  <div class="two" style="grid-template-columns:1.25fr .75fr;height:100%;align-items:center;gap:40px">
+    <div>
+      <div class="kicker a">Material de apoyo</div>
+      <h2 class="a" style="--d:.1;font-size:38px">Todo lo necesario para <em>aprender haciendo</em></h2>
+      <div class="chips" style="margin-top:20px">
+        <span class="chip a z" style="--d:.2">Presentaciones digitales</span><span class="chip a z" style="--d:.25">Computador, video beam y sonido</span>
+        <span class="chip a z" style="--d:.3">Micrófonos e internet</span><span class="chip a z" style="--d:.35">Guías de trabajo</span>
+        <span class="chip a z" style="--d:.4">Recursos físicos en mesas curriculares</span><span class="chip a z" style="--d:.45">Gameproof</span>
+        <span class="chip a z" style="--d:.5">Software Tech Learning</span><span class="chip a z" style="--d:.55">Hojas, marcadores, cartulinas y fichas</span>
+        <span class="chip a z" style="--d:.6">Agenda impresa o digital</span><span class="chip a z" style="--d:.65">Formatos de asistencia y evaluación</span>
+        <span class="chip a z" style="--d:.7">Señalización de espacios</span>
+      </div>
+    </div>
+    <div class="card a z" style="--d:.5;text-align:center;padding:40px 28px">
+      <div class="kicker">Total de asistentes</div>
+      <div class="counter" style="font-size:130px;margin:10px 0"><span class="count" data-to="24">0</span></div>
+      <p style="font-size:16px">asistentes de las diferentes instituciones que conformamos la <b>Mesa de Bibliotecas</b>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 13 DIVIDER FERIA -->
+<section class="slide" data-t="Feria del Libro de Pereira">
+  <div class="divider">
+    <div class="kicker a">Paisaje, Café y Libro · XII versión</div>
+    <h1 class="a" style="--d:.15">Feria del Libro<br>de <em>Pereira 2026</em></h1>
+    <p class="lead a" style="--d:.35;font-size:24px">«El amor, origen de todas las historias»</p>
+    <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap" class="a" style="--d:.5"><span class="pill g">Del 5 al 9 de noviembre</span><span class="pill m">Expofuturo · Pereira</span><span class="pill w">Entrada libre</span></div>
+  </div>
+  <div class="poster a z" style="--d:.5;position:absolute;right:90px;top:70px;width:270px;transform:rotate(4deg)"><img data-z data-g="fer" src="img/i9.png" alt="Muy pronto nos veremos"></div>
+</section>
+
+<!-- 14 PIEZAS -->
+<section class="slide alt" data-t="Piezas publicitarias">
+  <div class="kicker a">Comunicación</div>
+  <h2 class="a" style="--d:.1">Piezas <em>publicitarias</em></h2>
+  <p class="lead a" style="--d:.2">Convocatoria de las actividades de REUNIR y sus instituciones aliadas dentro de la feria.</p>
+  <div class="row5" style="grid-template-columns:repeat(4,1fr);margin-top:22px">
+    <div class="a z" style="--d:.3"><a class="poster"><img data-z data-g="pz" src="img/i10.png" alt="El viaje del libro"></a><div class="cap">El viaje del libro · REUNIR</div></div>
+    <div class="a z" style="--d:.45"><a class="poster"><img data-z data-g="pz" src="img/i11.png" alt="Trazos exagerados"></a><div class="cap">Trazos exagerados · U. Católica de Pereira</div></div>
+    <div class="a z" style="--d:.6"><a class="poster"><img data-z data-g="pz" src="img/i12.png" alt="El amor en el libro"></a><div class="cap">El amor en el libro · U. Cooperativa</div></div>
+    <div class="a z" style="--d:.75"><a class="poster"><img data-z data-g="pz" src="img/i13.png" alt="Botellas de poesía"></a><div class="cap">Botellas de poesía · Areandina</div></div>
+  </div>
+</section>
+
+<!-- 15 STAND -->
+<section class="slide" data-t="Stand RUN">
+  <div class="kicker a">Presencia institucional</div>
+  <h2 class="a" style="--d:.1">Atención del stand por parte de la <em>RUN</em></h2>
+  <div class="two" style="grid-template-columns:.9fr 1.1fr;margin-top:10px;align-items:start">
+    <div class="a l" style="--d:.3">
+      <table class="tb"><thead><tr><th>Fecha</th><th>Jornada</th><th>Universidad</th></tr></thead><tbody>
+        <tr><td>Nov. 5</td><td>10 a. m. – 2:30 p. m.</td><td>U. Cooperativa de Colombia</td></tr>
+        <tr><td>Nov. 5</td><td>2:30 – 7:00 p. m.</td><td>U. Antonio Nariño</td></tr>
+        <tr><td>Nov. 6</td><td>10 a. m. – 2:30 p. m.</td><td>U. Católica</td></tr>
+        <tr><td>Nov. 6</td><td>2:30 – 7:00 p. m.</td><td>U. Libre</td></tr>
+        <tr><td>Nov. 7</td><td>10 a. m. – 2:30 p. m.</td><td>UNIMINUTO</td></tr>
+        <tr><td>Nov. 7</td><td>2:30 – 7:00 p. m.</td><td>Visión de las Américas</td></tr>
+        <tr><td>Nov. 8</td><td>10 a. m. – 2:30 p. m.</td><td>Comfamiliar</td></tr>
+        <tr><td>Nov. 8</td><td>2:30 – 7:00 p. m.</td><td>ESAP</td></tr>
+        <tr><td>Nov. 9</td><td>10 a. m. – 2:30 p. m.</td><td>SENA</td></tr>
+        <tr><td>Nov. 9</td><td>2:30 – 7:00 p. m.</td><td>UNISARC</td></tr>
+      </tbody></table>
+      <p class="cap" style="text-align:left">Turnos de atención del stand · <a href="#" data-zl="img/i15.png" style="color:var(--mag)">ver captura original</a></p>
+    </div>
+    <div class="gal" style="grid-template-columns:repeat(3,1fr);height:480px;margin:0">
+      <div class="frame a z" style="--d:.4;grid-row:span 2"><img data-z data-g="st" src="img/i14.png" alt="Stand RUN"></div>
+      <div class="frame a z" style="--d:.5"><img data-z data-g="st" src="img/i16.png" alt="Atención del stand"></div>
+      <div class="frame a z" style="--d:.6"><img data-z data-g="st" src="img/i17.png" alt="Visita de estudiantes"></div>
+      <div class="frame a z" style="--d:.7"><img data-z data-g="st" src="img/i18.png" alt="Stand universitario"></div>
+      <div class="frame a z" style="--d:.8"><img data-z data-g="st" src="img/i19.png" alt="Stand Visión de las Américas"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 16 PROGRAMACION -->
+<section class="slide alt" data-t="Programación">
+  <div class="kicker a">Programación</div>
+  <h2 class="a" style="--d:.1;font-size:38px">Talleres, encuentros y <em>lanzamientos</em></h2>
+  <div class="days a" style="--d:.2" id="days"></div>
+  <div class="prog">
+    <div class="poster a z" style="--d:.3" id="pp"><img id="ppi" data-z src="img/i20.png" alt="Programación"></div>
+    <div class="ev" id="ev"></div>
+  </div>
+</section>
+
+<!-- 17 GALERIA -->
+<section class="slide" data-t="Desarrollo de eventos">
+  <div class="kicker a">Desarrollo de eventos y lanzamientos</div>
+  <h2 class="a" style="--d:.1">Momentos <em>vividos</em></h2>
+  <div class="gal" id="gal">
+    <div class="frame a z" style="--d:.2"><img data-z data-g="ga" src="img/i24.png" alt="Lanzamiento El viaje del libro"></div>
+    <div class="frame a z" style="--d:.28"><img data-z data-g="ga" src="img/i25.png" alt="Conversatorio"></div>
+    <div class="frame a z" style="--d:.36"><img data-z data-g="ga" src="img/i26.png" alt="Lectura con estudiantes"></div>
+    <div class="frame a z" style="--d:.44"><img data-z data-g="ga" src="img/i27.png" alt="Público"></div>
+    <div class="frame a z" style="--d:.52"><img data-z data-g="ga" src="img/i28.png" alt="Taller con estudiantes"></div>
+    <div class="frame a z" style="--d:.6"><img data-z data-g="ga" src="img/i29.png" alt="Visita de colegios"></div>
+    <div class="frame a z" style="--d:.68"><img data-z data-g="ga" src="img/i30.png" alt="Auditorio"></div>
+    <div class="frame a z" style="--d:.76"><img data-z data-g="ga" src="img/i31.png" alt="Conversatorio"></div>
+    <div class="frame a z" style="--d:.84"><img data-z data-g="ga" src="img/i32.png" alt="Equipo Areandina"></div>
+    <div class="frame a z" style="--d:.92"><img data-z data-g="ga" src="img/i33.png" alt="Asistentes"></div>
+  </div>
+</section>
+
+<!-- 18 RESULTADOS -->
+<section class="slide alt" data-t="Resultados REUNIR">
+  <div class="kicker a">Resultados · 8 actividades</div>
+  <h2 class="a" style="--d:.1">Asistentes <em>REUNIR</em> por institución</h2>
+  <div class="bars">
+    <div class="bar a" style="--d:.2;--w:100%"><span>Universidad Católica de Pereira</span><div class="tr"><div class="fl" style="--d:.2"></div></div><span class="vv"><span class="count" data-to="428">0</span></span></div>
+    <div class="bar a" style="--d:.35;--w:12.2%"><span>Universidad Cooperativa de Colombia</span><div class="tr"><div class="fl" style="--d:.35"></div></div><span class="vv"><span class="count" data-to="52">0</span></span></div>
+    <div class="bar a" style="--d:.5;--w:8.2%"><span>Fundación Universitaria del Área Andina</span><div class="tr"><div class="fl" style="--d:.5"></div></div><span class="vv"><span class="count" data-to="35">0</span></span></div>
+    <div class="bar a" style="--d:.65;--w:10.8%"><span>Universidad Libre de Pereira</span><div class="tr"><div class="fl" style="--d:.65"></div></div><span class="vv"><span class="count" data-to="46">0</span></span></div>
+  </div>
+  <div class="tot a" style="--d:.9">
+    <div class="card" style="display:flex;align-items:center;gap:22px;padding:18px 34px"><div class="counter" style="font-size:72px"><span class="count" data-to="561">0</span></div><div><h3 style="font-size:22px">Total de asistentes</h3><p>de las 8 actividades REUNIR en la feria.</p></div></div>
+  </div>
+</section>
+
+<!-- 19 FERIA CIFRAS -->
+<section class="slide" data-t="Resultados de la feria">
+  <div class="kicker a">Feria Paisaje, Café y Libro · con la Cámara de Comercio</div>
+  <h2 class="a" style="--d:.1">Juntos logramos <em>reunir</em></h2>
+  <div class="stats">
+    <div class="card stat a z" style="--d:.2"><div class="counter">+<span class="count" data-to="45000" data-sep="1">0</span></div><h3>asistentes</h3></div>
+    <div class="card stat a z" style="--d:.35"><div class="counter">$<span class="count" data-to="1000" data-sep="1">0</span> M+</div><h3>en ventas</h3></div>
+    <div class="card stat a z" style="--d:.5"><div class="counter"><span class="count" data-to="189">0</span></div><h3>expositores vinculados</h3></div>
+    <div class="card stat a z" style="--d:.65"><div class="counter"><span class="count" data-to="11">0</span></div><h3>sectores de nuestra economía conectados</h3></div>
+    <div class="card stat a z" style="--d:.8"><div class="counter">+<span class="count" data-to="6000" data-sep="1">0</span></div><h3>estudiantes de colegios públicos y privados</h3></div>
+    <div class="card stat a z" style="--d:.95;display:grid;place-items:center"><p style="font-family:var(--head);font-size:24px;color:var(--dgreen);line-height:1.25">Estas cifras demuestran que la <b style="color:var(--mag)">cultura transforma.</b></p></div>
+  </div>
+</section>
+
+<!-- 20 ILL -->
+<section class="slide alt" data-t="Préstamo interbibliotecario">
+  <div class="two" style="grid-template-columns:1fr 1.05fr;height:100%;align-items:center;gap:34px">
+    <div>
+      <div class="kicker a">Sistema de préstamo interbibliotecario</div>
+      <h2 class="a" style="--d:.1;font-size:44px">El <em>viaje del libro</em></h2>
+      <p class="lead a" style="--d:.25;font-size:17px">Implementación de un sistema para gestionar solicitudes, seguimiento y control de préstamos entre bibliotecas de la Red REUNIR.</p>
+      <div class="card a" style="--d:.4;margin-top:14px;padding:14px 18px"><p>El formato fue diseñado por el Analista de Biblioteca Areandina, <b>Alejandro Labrada Jiménez</b>, en tiempo récord de <b>un mes</b>, y se fortaleció con la revisión de los integrantes de REUNIR.</p></div>
+      <div class="flow a" style="--d:.55"><span class="chip">Flujo identificado</span><span class="ar">→</span><span class="chip">Consola Apps Script</span><span class="ar">→</span><span class="chip">Sistema funcional</span></div>
+      <div class="chips a" style="--d:.65"><span class="chip">📧 Gmail</span><span class="chip">📅 Calendar</span><span class="chip">📝 Formularios</span><span class="chip">🔎 Trazabilidad</span><span class="chip">✅ Validaciones y ajustes</span></div>
+      <div style="margin-top:20px" class="a" style="--d:.8"><a class="btn" href="https://bibliotecas-areandina.github.io/reunir-ill-system/presentacion/#1" target="_blank" rel="noopener">Ver la presentación del sistema →</a></div>
+    </div>
+    <div class="a r" style="--d:.4"><div class="frame"><img src="img/i34.png" data-z alt="Presentación El viaje del libro"></div><p class="cap">Lanzamiento · 9 de noviembre, 3:00 p. m. · Salón Pueblo Rico, Expofuturo</p></div>
+  </div>
+</section>
+
+<!-- 21 CIERRE -->
+<section class="slide" data-t="Gracias">
+  <div style="text-align:center;padding-top:34px">
+    <div class="big-logo a z" style="width:250px;height:73px;overflow:hidden;position:relative;margin:0 auto 20px"><img src="img/logo.jpeg" style="position:absolute;left:-5px;top:-5px;width:calc(100% + 10px);height:calc(100% + 10px)" alt="REUNIR"></div>
+    <div class="kicker a" style="--d:.2">Red de Unidades de Información de Risaralda y Eje Cafetero</div>
+    <h1 class="a" style="--d:.3;font-size:80px;margin:12px 0">¡Gracias por <em>reunirnos</em>!</h1>
+    <p class="lead a" style="--d:.45">Compartir conocimiento, conectar comunidades y hacer que un libro pueda viajar lejos.</p>
+    <div class="endk">
+      <div class="card a z" style="--d:.55"><div class="counter"><span class="count" data-to="24">0</span></div><h3>asistentes al III Foro de Gamificación</h3></div>
+      <div class="card a z" style="--d:.65"><div class="counter"><span class="count" data-to="8">0</span></div><h3>actividades en la Feria del Libro</h3></div>
+      <div class="card a z" style="--d:.75"><div class="counter"><span class="count" data-to="561">0</span></div><h3>asistentes REUNIR en la feria</h3></div>
+      <div class="card a z" style="--d:.85"><div class="counter"><span class="count" data-to="1">0</span></div><h3>mes: tiempo récord para diseñar el sistema de préstamo</h3></div>
+    </div>
+  </div>
+</section>
+
+<div class="brand"><div class="logo"><img src="img/logo.jpeg" alt=""></div><span id="sect">Informe de gestión 2026</span></div>
+<div id="nav"><div id="dots"></div><button class="nb" id="pv" aria-label="Anterior">‹</button><button class="nb" id="nx" aria-label="Siguiente">›</button><a class="nb" id="pdf" href="Informe-REUNIR-2026.pdf" target="_blank" title="Descargar PDF" style="font-size:12px;font-weight:700;display:grid;place-items:center;text-decoration:none;font-family:var(--head)">PDF</a><button class="nb" id="fs" aria-label="Pantalla completa" style="font-size:15px">⛶</button></div>
+</div></div>
+<div id="lb"><button id="lbp">‹</button><img alt=""><button id="lbn">›</button></div>
+
+<script>
+(function(){
+var qs=function(s,r){return (r||document).querySelector(s)},qa=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
+var stage=qs('#stage'),slides=qa('.slide'),N=slides.length,cur=-1,isPrint=/[?&]print/.test(location.search);
+if(isPrint)document.body.classList.add('print');
+/* scale */
+function fit(){if(isPrint)return;var s=Math.min(innerWidth/1280,innerHeight/720);stage.style.transform='scale('+s+')'}
+addEventListener('resize',fit);fit();
+/* petals */
+var pe=qs('#petals');for(var i=0;i<16;i++){var p=document.createElement('i');p.className='petal';p.style.left=Math.random()*100+'%';p.style.setProperty('--x',(Math.random()*160-80)+'px');p.style.animationDuration=(9+Math.random()*9)+'s';p.style.animationDelay=(-Math.random()*16)+'s';p.style.background=Math.random()>.7?'#6DB33F':'#E8438A';pe.appendChild(p)}
+/* dots */
+var dots=qs('#dots');slides.forEach(function(s,i){var d=document.createElement('i');d.title=s.dataset.t;d.onclick=function(){go(i)};dots.appendChild(d)});
+/* counters */
+function fmt(n,sep){return sep?n.toLocaleString('es-CO'):String(n)}
+function runCounts(sl){qa('.count',sl).forEach(function(c){var to=+c.dataset.to,sep=c.dataset.sep;if(isPrint){c.textContent=fmt(to,sep);return}
+  var t0=null;c.textContent='0';(function st(t){if(!t0)t0=t;var k=Math.min(1,(t-t0-400)/1600);if(k<0){requestAnimationFrame(st);return}k=1-Math.pow(1-k,3);c.textContent=fmt(Math.round(to*k),sep);if(k<1)requestAnimationFrame(st)})(performance.now())})}
+/* go */
+function go(n){n=Math.max(0,Math.min(N-1,n));if(n===cur)return;if(cur>=0)slides[cur].classList.remove('on');cur=n;var sl=slides[n];sl.classList.add('on');
+  qa('#dots i').forEach(function(d,i){d.classList.toggle('on',i===n)});
+  qs('#bar').style.width=((n+1)/N*100)+'%';qs('#num').textContent=(n+1)+' / '+N;qs('#sect').textContent=sl.dataset.t;
+  history.replaceState(null,'','#'+(n+1));runCounts(sl);if(sl.onshow)sl.onshow()}
+qs('#nx').onclick=function(){go(cur+1)};qs('#pv').onclick=function(){go(cur-1)};
+qs('#fs').onclick=function(){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()};
+addEventListener('keydown',function(e){if(qs('#lb').classList.contains('on')){if(e.key==='Escape')closeLB();if(e.key==='ArrowRight')lbStep(1);if(e.key==='ArrowLeft')lbStep(-1);return}
+  if(['ArrowRight','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();go(cur+1)}else if(['ArrowLeft','PageUp'].indexOf(e.key)>-1){go(cur-1)}else if(e.key==='Home')go(0);else if(e.key==='End')go(N-1);else if(e.key==='f'||e.key==='F')qs('#fs').click()});
+var tx=null;addEventListener('touchstart',function(e){tx=e.touches[0].clientX});addEventListener('touchend',function(e){if(tx===null)return;var d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>60)go(cur+(d<0?1:-1));tx=null});
+qa('[data-go]').forEach(function(el){el.onclick=function(){go(+el.dataset.go)}});
+/* lightbox */
+var lb=qs('#lb'),lbi=qs('#lb img'),grp=[],gi=0;
+function openLB(img){grp=qa('img[data-z]').filter(function(i){return i.dataset.g&&i.dataset.g===img.dataset.g&&i.closest('.slide')===img.closest('.slide')});if(!grp.length)grp=[img];gi=grp.indexOf(img);if(gi<0)gi=0;lbi.src=grp[gi].src;lb.classList.add('on');qs('#lbp').style.display=qs('#lbn').style.display=grp.length>1?'block':'none'}
+function closeLB(){lb.classList.remove('on')}
+function lbStep(d){gi=(gi+d+grp.length)%grp.length;lbi.src=grp[gi].src}
+document.addEventListener('click',function(e){var t=e.target;if(t.matches&&t.matches('img[data-z]')){openLB(t)}
+  else if(t.dataset&&t.dataset.zl){e.preventDefault();grp=[];lbi.src=t.dataset.zl;lb.classList.add('on');qs('#lbp').style.display=qs('#lbn').style.display='none'}});
+lb.onclick=function(e){if(e.target===lb||e.target===lbi)closeLB()};qs('#lbp').onclick=function(e){e.stopPropagation();lbStep(-1)};qs('#lbn').onclick=function(e){e.stopPropagation();lbStep(1)};
+
+/* rings */
+var R=[
+ {n:'Solución integral de préstamo interbibliotecario',p:[95,100],t:['Se diseñó el formato por parte del Analista de Biblioteca Areandina, Alejandro Labrada Jiménez, en tiempo récord de un mes y se fortaleció con la revisión del equipo REUNIR.','Se identificó el flujo y se conectó todo en una consola de Apps Script, con trazabilidad, usando Gmail, Calendar y formularios.']},
+ {n:'Jornadas de formación conjunta con otras redes',p:[30,30],t:['Dificultades para generar capacitaciones y ofrecerlas en la programación que se deseaba tener.','Poca participación en este ítem por el trabajo con otras redes; se realizaron 4 capacitaciones a nivel REUNIR en las sesiones de reuniones.']},
+ {n:'Participación en la Feria del Libro de Pereira',p:[70,100],t:['El terremoto del pasado 10 de agosto cambió la dinámica de la Feria y obligó a reprogramarla.','Se logró desarrollar del 5 al 9 de noviembre de 2026: 8 actividades de las diferentes instituciones, con lanzamientos de libros y conversatorios, y 561 asistentes.']},
+ {n:'III Foro de Bibliotecas REUNIR (gamificación)',p:[70,100],t:['El terremoto del pasado 10 de agosto cambió la dinámica y obligó a reprogramar el foro.','Se realizó la reprogramación del tercer foro de REUNIR en el tema de Gamificación, el 7 de octubre de 2026.']},
+ {n:'Diagnóstico de recursos y capacidades bibliotecarias – 2025',p:[10,10],t:['Avance inicial del diagnóstico.','No se logró más avance de este diagnóstico.']}
+];
+var rg=qs('#rings'),per=0;
+R.forEach(function(r,i){var c=document.createElement('div');c.className='card ring a z';c.style.setProperty('--d',(.35+i*.12));
+ c.innerHTML='<svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52"/><circle class="fg" cx="60" cy="60" r="52"/></svg><div class="pc"><b><span>0</span>%</b></div><h3>'+r.n+'</h3><p></p>';rg.appendChild(c)});
+function setRings(first){qa('.ring',rg).forEach(function(c,i){var v=R[i].p[per],fg=qs('.fg',c);fg.style.strokeDashoffset=(326.7*(1-v/100)).toFixed(1);fg.style.stroke=v>=100?'var(--green)':(v>=50?'#9bc94a':(v>=30?'var(--pink)':'var(--mag)'));
+  var s=qs('.pc span',c),from=+s.textContent,t0=null;if(isPrint){s.textContent=v;qs('p',c).textContent=R[i].t[per];return}(function st(t){if(!t0)t0=t;var k=Math.min(1,(t-t0)/1200);s.textContent=Math.round(from+(v-from)*k);if(k<1)requestAnimationFrame(st)})(performance.now());
+  qs('p',c).textContent=R[i].t[per]})}
+slides[3].onshow=function(){per=0;qa('#tog button').forEach(function(b){b.classList.toggle('on',b.dataset.p==='0')});qa('.ring .fg',rg).forEach(function(f){f.style.transition='none';f.style.strokeDashoffset=326.7;f.getBoundingClientRect();f.style.transition=''});qa('.ring .pc span',rg).forEach(function(s){s.textContent=0});setTimeout(setRings,600)};
+qa('#tog button').forEach(function(b){b.onclick=function(){per=+b.dataset.p;qa('#tog button').forEach(function(x){x.classList.toggle('on',x===b)});setRings()}});
+if(isPrint){per=1;setRings();qa('.ring .fg',rg).forEach(function(f){f.style.transition='none'});qa('.ring .pc span',rg).forEach(function(s,i){s.textContent=R[i].p[1]})}
+
+/* agenda */
+var AG=[
+ ['8:00 – 9:00 a. m.','Apertura y bienvenida','','Recepción y registro de los participantes, orientación sobre la agenda y presentación general del evento, para dar la bienvenida y contextualizar la importancia de la gamificación en la educación.'],
+ ['9:00 – 10:00 a. m.','Conferencia inaugural','Mauricio Alexander Moreno Cano','Tema: Gamificar desde la ética y la moral. Se abordó la importancia de incorporar principios éticos y morales en el diseño de experiencias educativas gamificadas, reflexionando sobre el uso responsable del juego, la motivación, la participación y las herramientas pedagógicas.'],
+ ['10:00 – 10:15 a. m.','Transición y preparación','','Espacio breve para organizar a los participantes, preparar los materiales y disponer el ambiente para el taller matutino.'],
+ ['10:15 a. m. – 12:00 m.','Taller matutino','Lisandro Navarro · Tech Learning','Taller orientado a la exploración y aplicación de estrategias de gamificación en contextos educativos: herramientas, metodologías y posibilidades para diseñar actividades de aprendizaje más dinámicas y participativas.'],
+ ['12:00 m. – 3:00 p. m.','Receso y visita a stands','','Descanso, interacción entre asistentes y exploración de materiales y recursos físicos educativos de los proveedores asistentes, para identificar alternativas aplicables en la enseñanza y el aprendizaje.'],
+ ['3:00 – 3:45 p. m.','Conferencia-taller','Kadier Torres Molina','Tema: Programa tu propia aventura: diseñando experiencias educativas gamificadas con Gameproof. Estrategias para crear recorridos, retos y actividades interactivas que favorecen la participación y el aprendizaje activo.'],
+ ['3:45 – 4:00 p. m.','Transición','','Organización del espacio y preparación de los recursos para la conferencia de cierre.'],
+ ['4:00 – 5:00 p. m.','Conferencia de cierre','Jorge Mario Madina','Tema: Aprendizaje interactivo: diseño de juegos educativos con eXeLearning. Recursos y juegos educativos interactivos para crear contenidos digitales que apoyen la comprensión de conceptos y la participación de los estudiantes.'],
+ ['5:00 p. m.','Despedida y cierre','','Agradecimiento a conferencistas, talleristas, organizadores y participantes, con una síntesis de los principales aprendizajes de la jornada.']
+];
+var tl=qs('#tl'),det=qs('#det');
+AG.forEach(function(a,i){var b=document.createElement('button');b.innerHTML='<span class="t">'+a[0]+'</span><span class="n">'+a[1]+'</span>';b.onclick=function(){sel(i)};tl.appendChild(b)});
+function sel(i){qa('button',tl).forEach(function(b,j){b.classList.toggle('on',i===j)});var a=AG[i];det.classList.remove('sw');void det.offsetWidth;det.classList.add('sw');
+ det.innerHTML='<div class="tm">'+a[0]+'</div><h3>'+a[1]+'</h3>'+(a[2]?'<div><span class="who">🎤 '+a[2]+'</span></div>':'')+'<p>'+a[3]+'</p>'}
+sel(0);var ai=0;slides[9].onshow=function(){sel(0)};
+
+/* programacion */
+var D=[
+ {l:'Jue',d:'5',img:'img/i20.png',e:[['Taller','Posthumano, transhumano y menos que humano: ética de la inteligencia artificial','Elkin Andrés Heredia Ríos · U. Católica de Pereira · Salón Belén de Umbría · 9:00 a. m.'],['Encuentro','Botellas de poesía: una experiencia para la infancia','Katherine Bermúdez Corrales y Mauricio Moreno Cano · Areandina · Salón La Celia · 10:00 a. m.']]},
+ {l:'Vie',d:'6',img:'img/i21.png',e:[['Lanzamiento de libro','Paternidad en construcción: la experiencia de hombres adolescentes','María del Pilar Gómez González · Areandina · Salón La Celia · 9:00 a. m.'],['Taller','Trazos exagerados: la caricatura como espacio de expresión','Juan David Atuesta · U. Católica de Pereira · Salón Mistrató · 11:00 a. m.'],['Conversatorio y presentación del libro','Disputas por las memorias sociales del conflicto armado en la región cafetera','Luis Adolfo Martínez · U. Católica de Pereira · Salón La Celia · 6:00 p. m.']]},
+ {l:'Sáb',d:'7',img:'img/i22.png',e:[['Conversatorio','Acerca del amor en el libro «El amor en los tiempos del cólera» de Gabriel García Márquez','Gleiber Sepúlveda y Cristian Cárdenas · U. Cooperativa · Salón La Celia · 2:00 p. m.'],['Lanzamiento de libro','Incidencia de las redes sociales en el sistema democrático participativo: estudio de caso del plebiscito por la paz colombiana','Natalia Escobar · Universidad Libre · 2:00 p. m.']]},
+ {l:'Lun',d:'9',img:'img/i23.png',e:[['Taller','Procesos de enseñanza y aprendizaje en la arquitectura: reflexiones desde Latinoamérica','Pável Sánchez y Diana Carolina Vargas · U. Católica de Pereira · Salón La Celia · 10:00 a. m.'],['Lanzamiento','El viaje del libro: Servicio de Préstamo Interbibliotecario para Risaralda y el Eje Cafetero','REUNIR – Red de Bibliotecas · Salón Pueblo Rico · 3:00 p. m.'],['Presentación de danza','Al ritmo del amor','Grupo de danza Folclórico BEDA · U. Católica de Pereira · Carpa Plazoleta · 3:00 p. m.']]}
+];
+var days=qs('#days'),ev=qs('#ev'),ppi=qs('#ppi');
+D.forEach(function(x,i){var b=document.createElement('button');b.innerHTML=x.l+'<b>'+x.d+'</b>';b.onclick=function(){day(i)};days.appendChild(b)});
+function day(i){qa('button',days).forEach(function(b,j){b.classList.toggle('on',i===j)});var x=D[i];ppi.src=x.img;ev.style.animation='none';void ev.offsetWidth;ev.style.animation='';
+ ev.innerHTML=x.e.map(function(e){return '<div class="card"><div class="ty">'+e[0]+'</div><h3>'+e[1]+'</h3><p>'+e[2]+'</p></div>'}).join('')}
+day(0);
+if(isPrint){var br=qs('.brand');slides.forEach(function(s){var c=br.cloneNode(true);c.id='';qs('#sect',c)&&(qs('#sect',c).id='',qs('span',c).textContent=s.dataset.t);s.appendChild(c)});br.style.display='none';qa('.a').forEach(function(e){e.classList.add('on')});slides.forEach(function(s){s.classList.add('on')});qa('.slide').forEach(function(s){runCounts(s)})}
+else{var h=parseInt(location.hash.slice(1),10);go(isNaN(h)?0:h-1)}
+})();
+</script>
+</body>
+</html>
