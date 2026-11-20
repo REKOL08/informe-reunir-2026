@@ -199,11 +199,11 @@ body.print #pdf,body.print #nav,body.print #bar,body.print #num,body.print #peta
 body.print .brand{position:absolute}
 @page{size:1280px 720px;margin:0}
 @media print{body{overflow:visible;background:#fff}}
-</style>
+.hero{flex:.9;position:relative;height:460px}.hc{position:absolute;width:340px;padding:24px 28px;border-radius:22px;background:#fffdf9;border:1px solid #e9ddd2;box-shadow:0 18px 40px rgba(60,40,50,.14)}.hc small{font-family:var(--head);color:var(--mag);font-size:15px}.hc b{display:block;font-family:var(--head);font-size:26px;line-height:1.15;margin:6px 0}.hc span{color:var(--soft);font-size:15px}.hc:before{content:"";position:absolute;left:0;top:22px;bottom:22px;width:6px;border-radius:0 6px 6px 0;background:var(--green)}.c1{left:20px;top:10px}.c2{left:80px;top:165px}.c2:before{background:var(--mag)}.c3{left:20px;top:320px}.hc{animation:fl 6s ease-in-out infinite}.c2{animation-delay:-2s}.c3{animation-delay:-4s}@keyframes fl{50%{transform:translateY(-10px)}}</style>
 </head>
 <body>
 <div id="viewport"><div id="stage">
-<div id="bar"></div><div id="num"></div><div id="petals"></div>
+<div id="bar"></div><div id="num"></div>
 
 <!-- 1 PORTADA -->
 <section class="slide" data-t="Portada">
@@ -215,12 +215,7 @@ body.print .brand{position:absolute}
       <p class="lead a" style="--d:.6">Foro de Gamificación, Feria del Libro de Pereira y el nuevo Sistema de Préstamo Interbibliotecario de Risaralda y el Eje Cafetero.</p>
       <div style="margin-top:26px;display:flex;gap:12px" class="a" style="--d:.8"><span class="pill g">Mesa Biblioteca REUNIR</span><span class="pill m">Noviembre 2026</span></div>
     </div>
-    <div class="book a z" style="--d:.5">
-      <div class="cv"></div><div class="pg"></div><div class="bk"></div>
-      <div class="flower" style="left:6%;top:6%">🌸</div>
-      <div class="flower" style="right:2%;bottom:6%;font-size:110px;animation-delay:1.5s">🌺</div>
-      <div style="position:relative;z-index:2;text-align:center;font-family:var(--head);color:var(--mag);font-size:26px;line-height:1.3;padding:0 70px">Compartir<br>conocimiento,<br><span style="color:var(--dgreen)">conectar<br>comunidades</span></div>
-    </div>
+    <div class="hero a z" style="--d:.5"><div class="hc c1"><small>01</small><b>III Foro de Gamificación</b><span>Pereira · 7 de octubre</span></div><div class="hc c2"><small>02</small><b>Feria del Libro de Pereira</b><span>5 al 9 de noviembre</span></div><div class="hc c3"><small>03</small><b>Préstamo interbibliotecario</b><span>Sistema para toda la Red</span></div></div>
   </div>
 </section>
 
@@ -549,7 +544,7 @@ if(isPrint)document.body.classList.add('print');
 function fit(){if(isPrint)return;var s=Math.min(innerWidth/1280,innerHeight/720);stage.style.transform='scale('+s+')'}
 addEventListener('resize',fit);fit();
 /* petals */
-var pe=qs('#petals');for(var i=0;i<16;i++){var p=document.createElement('i');p.className='petal';p.style.left=Math.random()*100+'%';p.style.setProperty('--x',(Math.random()*160-80)+'px');p.style.animationDuration=(9+Math.random()*9)+'s';p.style.animationDelay=(-Math.random()*16)+'s';p.style.background=Math.random()>.7?'#6DB33F':'#E8438A';pe.appendChild(p)}
+
 /* dots */
 var dots=qs('#dots');slides.forEach(function(s,i){var d=document.createElement('i');d.title=s.dataset.t;d.onclick=function(){go(i)};dots.appendChild(d)});
 /* counters */
