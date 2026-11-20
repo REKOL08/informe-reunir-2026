@@ -199,7 +199,76 @@ body.print #pdf,body.print #nav,body.print #bar,body.print #num,body.print #peta
 body.print .brand{position:absolute}
 @page{size:1280px 720px;margin:0}
 @media print{body{overflow:visible;background:#fff}}
-.hero{flex:.9;position:relative;height:460px}.hc{position:absolute;width:340px;padding:24px 28px;border-radius:22px;background:#fffdf9;border:1px solid #e3eedb;box-shadow:0 18px 40px rgba(60,40,50,.14)}.hc small{font-family:var(--head);color:var(--mag);font-size:15px}.hc b{display:block;font-family:var(--head);font-size:26px;line-height:1.15;margin:6px 0}.hc span{color:var(--soft);font-size:15px}.hc:before{content:"";position:absolute;left:0;top:22px;bottom:22px;width:6px;border-radius:0 6px 6px 0;background:var(--pink)}.c1{left:20px;top:10px}.c2{left:80px;top:165px}.c2:before{background:var(--mag)}.c3{left:20px;top:320px}.hc{animation:fl 6s ease-in-out infinite}.c2{animation-delay:-2s}.c3{animation-delay:-4s}@keyframes fl{50%{transform:translateY(-10px)}}</style>
+.hero{flex:.9;position:relative;height:460px}.hc{position:absolute;width:340px;padding:24px 28px;border-radius:22px;background:#fffdf9;border:1px solid #e3eedb;box-shadow:0 18px 40px rgba(60,40,50,.14)}.hc small{font-family:var(--head);color:var(--mag);font-size:15px}.hc b{display:block;font-family:var(--head);font-size:26px;line-height:1.15;margin:6px 0}.hc span{color:var(--soft);font-size:15px}.hc:before{content:"";position:absolute;left:0;top:22px;bottom:22px;width:6px;border-radius:0 6px 6px 0;background:var(--pink)}.c1{left:20px;top:10px}.c2{left:80px;top:165px}.c2:before{background:var(--mag)}.c3{left:20px;top:320px}.hc{animation:fl 6s ease-in-out infinite}.c2{animation-delay:-2s}.c3{animation-delay:-4s}@keyframes fl{50%{transform:translateY(-10px)}}
+.slide>*:not(.amb){position:relative;z-index:1}
+.amb{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.amb span{position:absolute;bottom:-70px;opacity:.15;animation:rise linear infinite}
+@keyframes rise{to{transform:translateY(-840px) rotate(var(--rot,40deg))}}
+body.print .amb{display:none}
+.gantt{padding:12px 20px;margin-top:14px}
+.gh,.gr{display:grid;grid-template-columns:330px 1fr}
+.gh .m{display:grid;grid-template-columns:repeat(8,1fr);text-align:center}
+.gh b{font-family:var(--head);font-weight:500;font-size:12px;color:var(--soft);letter-spacing:.1em;text-transform:uppercase}
+.gr{height:41px;align-items:center;border-radius:12px;cursor:pointer;transition:.25s;padding:0 6px}
+.gr:hover,.gr.on{background:var(--greenl)}
+.gl{display:flex;gap:10px;align-items:center;font-weight:700;font-size:14px;line-height:1.2;padding-right:10px}
+.gl i{flex:none;width:26px;height:26px;border-radius:50%;background:var(--mag);color:#fff;display:grid;place-items:center;font-style:normal;font-family:var(--head);font-size:13px}
+.gt{display:grid;grid-template-columns:repeat(8,1fr);height:100%;align-items:center;background:repeating-linear-gradient(90deg,transparent 0 calc(12.5% - 1px),#dbe8cf calc(12.5% - 1px) 12.5%)}
+.gt u{grid-row:1;height:20px;border-radius:12px;margin:0 3px;background:linear-gradient(90deg,var(--pink),var(--mag));transform:scaleX(0);transform-origin:left;transition:transform 1s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--d,0)*1s + .7s)}
+.slide.on .gt u{transform:scaleX(1)}
+.gr.on .gt u{box-shadow:0 0 0 3px rgba(93,184,46,.3)}
+body.print .gt u{transform:none;transition:none}
+.gdet{margin-top:12px;display:grid;grid-template-columns:290px 1fr 1fr;gap:24px;padding:14px 22px;min-height:126px;align-items:center}
+.gdet.sw{animation:sw .45s ease}
+.gdet h3{font-size:17px;margin:4px 0 8px;line-height:1.2}
+.gdet small{display:block;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--mag);margin-bottom:4px}
+.gdet p{font-size:13.5px;line-height:1.45}
+.gdet .pill{font-size:13px;padding:6px 14px}
+.xp{display:flex;align-items:center;gap:10px}
+.xp small{font-family:var(--head);font-weight:700;color:var(--mag)}
+.xb{width:190px;height:14px;border-radius:10px;background:#dbe8cf;overflow:hidden}
+.xb div{height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--mag));border-radius:10px;transition:width .7s}
+.xp b{font-family:var(--head);font-size:14px}
+.quest{display:grid;grid-template-columns:1fr 320px;gap:34px;margin-top:10px}
+.path{position:relative;display:flex;justify-content:space-between;margin-top:16px}
+.pl{position:absolute;left:50px;right:50px;top:31px;height:7px;background:#dbe8cf;border-radius:6px}
+#plf{height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--mag));border-radius:6px;transition:width .7s}
+.nd{position:relative;z-index:2;border:0;background:none;cursor:pointer;width:100px;font-family:inherit;text-align:center}
+.nd .ni{width:62px;height:62px;border-radius:50%;background:#fff;border:4px solid #dbe8cf;display:grid;place-items:center;font-size:26px;margin:0 auto 8px;transition:.35s}
+.nd small{display:block;font-size:12px;font-weight:700;color:var(--soft);line-height:1.2}
+.nd.done .ni{border-color:var(--pink)}
+.nd.on .ni{background:var(--mag);border-color:var(--mag);transform:scale(1.22);animation:pulse 1.6s infinite}
+.nd.on small{color:var(--mag)}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(47,107,26,.4)}100%{box-shadow:0 0 0 16px rgba(47,107,26,0)}}
+.qd{margin-top:22px;display:flex;gap:22px;align-items:center;min-height:190px;padding:22px 26px}
+.qd.sw{animation:sw .45s ease}
+.qd .bg{flex:none;width:92px;height:92px;border-radius:26px;background:var(--greenl);display:grid;place-items:center;font-size:48px;animation:bob 3s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px) rotate(-4deg)}}
+.qd small{font-family:var(--head);font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--mag);font-size:12.5px}
+.qd h3{font-size:26px;margin:4px 0 8px}
+.qd .who{display:inline-block;background:var(--greenl);color:var(--dgreen);border-radius:12px;padding:6px 12px;font-weight:700;font-size:14px;margin-bottom:8px}
+.qd p{font-size:16px;line-height:1.5}
+.posters{position:relative;height:470px}
+.posters .poster{position:absolute;width:225px;animation:bob 5s ease-in-out infinite}
+.pa{left:0;top:6px}.pb{left:95px;top:150px;animation-delay:-2s!important}
+.trip{position:relative;display:flex;justify-content:space-between;align-items:center;margin:4px 6px 14px;padding:0 4px;height:34px;font-size:24px}
+.trip:before{content:"";position:absolute;left:20px;right:20px;top:50%;border-top:3px dashed var(--pink)}
+.trip span{position:relative;background:var(--cream);border-radius:50%}
+.trip .bk{position:absolute;left:0;top:2px;font-size:26px;animation:go 5s ease-in-out infinite}
+@keyframes go{0%{left:0}50%{left:calc(100% - 30px)}100%{left:0}}
+.browser{width:700px;border-radius:14px;overflow:hidden;box-shadow:0 22px 50px rgba(30,60,20,.25);background:#fff;border:1px solid #cfdcc4}
+.bt{height:34px;background:#eef3e8;display:flex;align-items:center;gap:7px;padding:0 14px;font-size:12px;color:var(--soft)}
+.bt i{width:11px;height:11px;border-radius:50%;background:#c9d6bd}.bt i:first-child{background:#e46c5f}.bt i:nth-child(2){background:#e8c04f}.bt i:nth-child(3){background:#6fc058}
+.bt span{margin-left:10px;background:#fff;border-radius:14px;padding:4px 14px;flex:1}
+.bv{position:relative;width:700px;height:394px;overflow:hidden;background:#fff}
+.bv .bf{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bv iframe{position:absolute;left:0;top:0;width:1280px;height:720px;border:0;transform:scale(.5469);transform-origin:0 0;background:#fff}
+body.print .bv iframe{display:none}
+#vm{position:fixed;inset:0;background:rgba(20,30,15,.88);display:none;z-index:110;align-items:center;justify-content:center}
+#vm.on{display:flex}
+#vm iframe{width:92vw;height:86vh;border:0;border-radius:12px;background:#fff}
+#vmc{position:absolute;top:14px;right:18px;width:42px;height:42px;border-radius:50%;border:0;font-size:18px;cursor:pointer;background:#fff;color:var(--mag)}
+</style>
 </head>
 <body>
 <div id="viewport"><div id="stage">
@@ -236,22 +305,19 @@ body.print .brand{position:absolute}
 
 <!-- 3 PLAN DE ACCION -->
 <section class="slide" data-t="Plan de acción">
-  <div class="kicker a">Plan de acción a desarrollarse · 2026</div>
-  <h2 class="a" style="--d:.1">Cinco actividades para <em>fortalecer la red</em></h2>
-  <div class="two" style="grid-template-columns:1.08fr .92fr;margin-top:14px;align-items:start">
-    <div class="a l" style="--d:.3">
-      <div class="frame"><img src="img/i1.png" data-z data-g="plan" alt="Matriz del plan de acción 2026 - mesa Biblioteca"></div>
-      <p class="cap">Matriz del plan de acción 2026 · Mesa Biblioteca REUNIR (clic para ampliar)</p>
-      <div class="card" style="margin-top:12px;padding:14px 18px"><p><b>Coordinación de la mesa:</b> Yudi Mayerly Ariza López (febrero – abril 2026) y Nelly Herrera Vargas (mayo – noviembre 2026).</p></div>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:9px">
-      <div class="card act a r" style="--d:.4"><div class="n">1</div><div><h3>Solución integral para el préstamo interbibliotecario</h3><small>Mayo – julio</small></div></div>
-      <div class="card act a r" style="--d:.5"><div class="n">2</div><div><h3>Jornadas de formación conjunta · REUNIR, Asouniesca, Rebime y Embies</h3><small>Abril – mayo / agosto – noviembre</small></div></div>
-      <div class="card act a r" style="--d:.6"><div class="n">3</div><div><h3>Participación en la Feria del Libro de Pereira</h3><small>Octubre (programada)</small></div></div>
-      <div class="card act a r" style="--d:.7"><div class="n">4</div><div><h3>III Foro de Bibliotecas REUNIR con estrategias de gamificación</h3><small>Agosto (programado)</small></div></div>
-      <div class="card act a r" style="--d:.8"><div class="n">5</div><div><h3>Diagnóstico de recursos y capacidades bibliotecarias – 2025</h3><small>Junio – julio</small></div></div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px">
+    <div><div class="kicker a">Plan de acción a desarrollarse · 2026 · Mesa Biblioteca REUNIR</div><h2 class="a" style="--d:.1;font-size:38px">Cinco actividades para <em>fortalecer la red</em></h2></div>
+    <div class="a r" style="--d:.3;display:flex;align-items:center;gap:14px;flex:none">
+      <p style="font-size:12.5px;line-height:1.4;color:var(--soft);max-width:250px;text-align:right"><b>Coordinan la mesa:</b><br>Yudi Mayerly Ariza López (feb–abr)<br>Nelly Herrera Vargas (may–nov)</p>
+      <div class="frame" style="width:150px;height:72px"><img src="img/i1.png" data-z data-g="plan" alt="Matriz original del plan de acción"></div>
     </div>
   </div>
+  <div class="card gantt a" style="--d:.3">
+    <div class="gh"><span></span><div class="m"><b>Abr</b><b>May</b><b>Jun</b><b>Jul</b><b>Ago</b><b>Sep</b><b>Oct</b><b>Nov</b></div></div>
+    <div id="gantt"></div>
+  </div>
+  <div class="card gdet a" id="gdet" style="--d:.5"></div>
+  <p class="cap a" style="--d:.7;margin-top:6px">Toca una actividad para ver su objetivo e indicador · la captura original de la matriz se amplía con un clic</p>
 </section>
 
 <!-- 4 DESARROLLO -->
@@ -341,13 +407,22 @@ body.print .brand{position:absolute}
   </div>
 </section>
 
-<!-- 10 AGENDA -->
-<section class="slide alt" data-t="Agenda del foro">
-  <div class="kicker a">Desarrollo del evento</div>
-  <h2 class="a" style="--d:.1;font-size:38px">Una jornada <em>de 8:00 a. m. a 5:00 p. m.</em></h2>
-  <div class="agenda">
-    <div class="tl a l" style="--d:.2" id="tl"></div>
-    <div class="card det a r" style="--d:.3" id="det"></div>
+<!-- 10 RECORRIDO FORO -->
+<section class="slide alt" data-t="III Foro: recorrido">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end">
+    <div><div class="kicker a">Así lo vivimos · III Foro de Gamificación</div><h2 class="a" style="--d:.1;font-size:40px">Un recorrido por <em>niveles</em></h2></div>
+    <div class="xp a" style="--d:.3"><small>XP</small><div class="xb"><div id="xpf"></div></div><b id="xpl">Nivel 1/6</b></div>
+  </div>
+  <div class="quest">
+    <div>
+      <div class="path a" id="path" style="--d:.3"><div class="pl"><div id="plf"></div></div></div>
+      <div class="card qd a" id="qd" style="--d:.5"></div>
+      <div class="chips a" style="--d:.7;margin-top:16px"><span class="chip">🎤 4 ponentes</span><span class="chip">👥 24 asistentes</span><span class="chip">📺 Transmisión por YouTube</span><span class="chip">📍 Biblioteca Otto Morales Benítez</span></div>
+    </div>
+    <div class="posters">
+      <div class="poster pa a z" style="--d:.4"><img data-z data-g="foro" src="img/i7.png" alt="Agenda del foro"></div>
+      <div class="poster pb a z" style="--d:.6"><img data-z data-g="foro" src="img/i8.png" alt="Invitación al foro"></div>
+    </div>
   </div>
 </section>
 
@@ -488,7 +563,8 @@ body.print .brand{position:absolute}
 <section class="slide" data-t="Resultados de la feria">
   <div class="kicker a">Feria Paisaje, Café y Libro · con la Cámara de Comercio</div>
   <h2 class="a" style="--d:.1">Juntos logramos <em>reunir</em></h2>
-  <div class="stats">
+  <p class="lead a" style="--d:.2;font-size:17px;max-width:960px">Estos datos fueron <b>suministrados por la propia Cámara de Comercio de Pereira</b>, a partir de lo vivido en la Feria del Libro.</p>
+  <div class="stats" style="margin-top:16px">
     <div class="card stat a z" style="--d:.2"><div class="counter">+<span class="count" data-to="45000" data-sep="1">0</span></div><h3>asistentes</h3></div>
     <div class="card stat a z" style="--d:.35"><div class="counter">$<span class="count" data-to="1000" data-sep="1">0</span> M+</div><h3>en ventas</h3></div>
     <div class="card stat a z" style="--d:.5"><div class="counter"><span class="count" data-to="189">0</span></div><h3>expositores vinculados</h3></div>
@@ -496,21 +572,28 @@ body.print .brand{position:absolute}
     <div class="card stat a z" style="--d:.8"><div class="counter">+<span class="count" data-to="6000" data-sep="1">0</span></div><h3>estudiantes de colegios públicos y privados</h3></div>
     <div class="card stat a z" style="--d:.95;display:grid;place-items:center"><p style="font-family:var(--head);font-size:24px;color:var(--dgreen);line-height:1.25">Estas cifras demuestran que la <b style="color:var(--mag)">cultura transforma.</b></p></div>
   </div>
+<div class="a" style="--d:1.1;margin-top:16px;display:flex;align-items:center;gap:12px"><span class="pill g">Fuente</span><span style="font-size:15px;color:var(--soft)">Cámara de Comercio de Pereira · Feria Paisaje, Café y Libro 2026</span></div>
 </section>
 
 <!-- 20 ILL -->
 <section class="slide alt" data-t="Préstamo interbibliotecario">
-  <div class="two" style="grid-template-columns:1fr 1.05fr;height:100%;align-items:center;gap:34px">
+  <div class="two" style="grid-template-columns:390px 1fr;height:100%;align-items:center;gap:30px">
     <div>
       <div class="kicker a">Sistema de préstamo interbibliotecario</div>
       <h2 class="a" style="--d:.1;font-size:44px">El <em>viaje del libro</em></h2>
-      <p class="lead a" style="--d:.25;font-size:17px">Implementación de un sistema para gestionar solicitudes, seguimiento y control de préstamos entre bibliotecas de la Red REUNIR.</p>
-      <div class="card a" style="--d:.4;margin-top:14px;padding:14px 18px"><p>El formato fue diseñado por el Analista de Biblioteca Areandina, <b>Alejandro Labrada Jiménez</b>, en tiempo récord de <b>un mes</b>, y se fortaleció con la revisión de los integrantes de REUNIR.</p></div>
-      <div class="flow a" style="--d:.55"><span class="chip">Flujo identificado</span><span class="ar">→</span><span class="chip">Consola Apps Script</span><span class="ar">→</span><span class="chip">Sistema funcional</span></div>
-      <div class="chips a" style="--d:.65"><span class="chip">📧 Gmail</span><span class="chip">📅 Calendar</span><span class="chip">📝 Formularios</span><span class="chip">🔎 Trazabilidad</span><span class="chip">✅ Validaciones y ajustes</span></div>
-      <div style="margin-top:20px" class="a" style="--d:.8"><a class="btn" href="https://bibliotecas-areandina.github.io/reunir-ill-system/presentacion/#1" target="_blank" rel="noopener">Ver la presentación del sistema →</a></div>
+      <p class="lead a" style="--d:.25;font-size:16px">Un sistema para gestionar solicitudes, seguimiento y control de préstamos entre las bibliotecas de la Red REUNIR.</p>
+      <div class="trip a" style="--d:.4"><span>🏛️</span><span>🏛️</span><span>🏛️</span><b class="bk">📖</b></div>
+      <div class="card a" style="--d:.5;padding:12px 16px"><p>Formato diseñado por <b>Alejandro Labrada Jiménez</b>, Analista de Biblioteca Areandina, en tiempo récord: <b>un mes</b>, con la revisión de los integrantes de REUNIR.</p></div>
+      <div class="chips a" style="--d:.6;margin-top:12px"><span class="chip">📧 Gmail</span><span class="chip">📅 Calendar</span><span class="chip">📝 Formularios</span><span class="chip">⚙️ Apps Script</span><span class="chip">🔎 Trazabilidad</span><span class="chip">✅ Validaciones</span></div>
+      <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap" class="a"><button class="btn" id="bigv" style="border:0;cursor:pointer">Ampliar presentación</button><a class="btn" style="background:#fff;color:var(--mag);box-shadow:none;border:2px solid var(--pinkl)" href="https://bibliotecas-areandina.github.io/reunir-ill-system/presentacion/" target="_blank" rel="noopener">Abrir en otra pestaña ↗</a></div>
     </div>
-    <div class="a r" style="--d:.4"><div class="frame"><img src="img/i34.png" data-z alt="Presentación El viaje del libro"></div><p class="cap">Lanzamiento · 9 de noviembre, 3:00 p. m. · Salón Pueblo Rico, Expofuturo</p></div>
+    <div class="a r" style="--d:.4">
+      <div class="browser">
+        <div class="bt"><i></i><i></i><i></i><span>bibliotecas-areandina.github.io/reunir-ill-system/presentacion</span></div>
+        <div class="bv"><img class="bf" src="img/i34.png" alt="Presentación El viaje del libro"><iframe id="ill" title="Presentación El viaje del libro" allow="fullscreen"></iframe></div>
+      </div>
+      <p class="cap">Presentación usada en el lanzamiento · 9 de noviembre, 3:00 p. m. · Salón Pueblo Rico, Expofuturo<br>Navega con las flechas dentro del recuadro</p>
+    </div>
   </div>
 </section>
 
@@ -533,6 +616,7 @@ body.print .brand{position:absolute}
 <div class="brand"><div class="logo"><img src="img/logo.jpeg" alt=""></div><span id="sect">Informe de gestión 2026</span></div>
 <div id="nav"><div id="dots"></div><button class="nb" id="pv" aria-label="Anterior">‹</button><button class="nb" id="nx" aria-label="Siguiente">›</button><a class="nb" id="pdf" href="Informe-REUNIR-2026.pdf" target="_blank" title="Descargar PDF" style="font-size:12px;font-weight:700;display:grid;place-items:center;text-decoration:none;font-family:var(--head)">PDF</a><button class="nb" id="fs" aria-label="Pantalla completa" style="font-size:15px">⛶</button></div>
 </div></div>
+<div id="vm"><button id="vmc">✕</button><iframe title="Presentación El viaje del libro" allow="fullscreen"></iframe></div>
 <div id="lb"><button id="lbp">‹</button><img alt=""><button id="lbn">›</button></div>
 
 <script>
@@ -552,13 +636,14 @@ function fmt(n,sep){return sep?n.toLocaleString('es-CO'):String(n)}
 function runCounts(sl){qa('.count',sl).forEach(function(c){var to=+c.dataset.to,sep=c.dataset.sep;if(isPrint){c.textContent=fmt(to,sep);return}
   var t0=null;c.textContent='0';(function st(t){if(!t0)t0=t;var k=Math.min(1,(t-t0-400)/1600);if(k<0){requestAnimationFrame(st);return}k=1-Math.pow(1-k,3);c.textContent=fmt(Math.round(to*k),sep);if(k<1)requestAnimationFrame(st)})(performance.now())})}
 /* go */
-function go(n){n=Math.max(0,Math.min(N-1,n));if(n===cur)return;if(cur>=0)slides[cur].classList.remove('on');cur=n;var sl=slides[n];sl.classList.add('on');
+var tm=null;function stopAuto(){if(tm){clearInterval(tm);tm=null}}
+function go(n){n=Math.max(0,Math.min(N-1,n));if(n===cur)return;stopAuto();if(cur>=0)slides[cur].classList.remove('on');cur=n;var sl=slides[n];sl.classList.add('on');
   qa('#dots i').forEach(function(d,i){d.classList.toggle('on',i===n)});
   qs('#bar').style.width=((n+1)/N*100)+'%';qs('#num').textContent=(n+1)+' / '+N;qs('#sect').textContent=sl.dataset.t;
   history.replaceState(null,'','#'+(n+1));runCounts(sl);if(sl.onshow)sl.onshow()}
 qs('#nx').onclick=function(){go(cur+1)};qs('#pv').onclick=function(){go(cur-1)};
 qs('#fs').onclick=function(){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()};
-addEventListener('keydown',function(e){if(qs('#lb').classList.contains('on')){if(e.key==='Escape')closeLB();if(e.key==='ArrowRight')lbStep(1);if(e.key==='ArrowLeft')lbStep(-1);return}
+addEventListener('keydown',function(e){if(qs('#vm').classList.contains('on')){if(e.key==='Escape')qs('#vmc').click();return}if(qs('#lb').classList.contains('on')){if(e.key==='Escape')closeLB();if(e.key==='ArrowRight')lbStep(1);if(e.key==='ArrowLeft')lbStep(-1);return}
   if(['ArrowRight','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();go(cur+1)}else if(['ArrowLeft','PageUp'].indexOf(e.key)>-1){go(cur-1)}else if(e.key==='Home')go(0);else if(e.key==='End')go(N-1);else if(e.key==='f'||e.key==='F')qs('#fs').click()});
 var tx=null;addEventListener('touchstart',function(e){tx=e.touches[0].clientX});addEventListener('touchend',function(e){if(tx===null)return;var d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>60)go(cur+(d<0?1:-1));tx=null});
 qa('[data-go]').forEach(function(el){el.onclick=function(){go(+el.dataset.go)}});
@@ -589,23 +674,49 @@ slides[3].onshow=function(){per=0;qa('#tog button').forEach(function(b){b.classL
 qa('#tog button').forEach(function(b){b.onclick=function(){per=+b.dataset.p;qa('#tog button').forEach(function(x){x.classList.toggle('on',x===b)});setRings()}});
 if(isPrint){per=1;setRings();qa('.ring .fg',rg).forEach(function(f){f.style.transition='none'});qa('.ring .pc span',rg).forEach(function(s,i){s.textContent=R[i].p[1]})}
 
-/* agenda */
-var AG=[
- ['8:00 – 9:00 a. m.','Apertura y bienvenida','','Recepción y registro de los participantes, orientación sobre la agenda y presentación general del evento, para dar la bienvenida y contextualizar la importancia de la gamificación en la educación.'],
- ['9:00 – 10:00 a. m.','Conferencia inaugural','Mauricio Alexander Moreno Cano','Tema: Gamificar desde la ética y la moral. Se abordó la importancia de incorporar principios éticos y morales en el diseño de experiencias educativas gamificadas, reflexionando sobre el uso responsable del juego, la motivación, la participación y las herramientas pedagógicas.'],
- ['10:00 – 10:15 a. m.','Transición y preparación','','Espacio breve para organizar a los participantes, preparar los materiales y disponer el ambiente para el taller matutino.'],
- ['10:15 a. m. – 12:00 m.','Taller matutino','Lisandro Navarro · Tech Learning','Taller orientado a la exploración y aplicación de estrategias de gamificación en contextos educativos: herramientas, metodologías y posibilidades para diseñar actividades de aprendizaje más dinámicas y participativas.'],
- ['12:00 m. – 3:00 p. m.','Receso y visita a stands','','Descanso, interacción entre asistentes y exploración de materiales y recursos físicos educativos de los proveedores asistentes, para identificar alternativas aplicables en la enseñanza y el aprendizaje.'],
- ['3:00 – 3:45 p. m.','Conferencia-taller','Kadier Torres Molina','Tema: Programa tu propia aventura: diseñando experiencias educativas gamificadas con Gameproof. Estrategias para crear recorridos, retos y actividades interactivas que favorecen la participación y el aprendizaje activo.'],
- ['3:45 – 4:00 p. m.','Transición','','Organización del espacio y preparación de los recursos para la conferencia de cierre.'],
- ['4:00 – 5:00 p. m.','Conferencia de cierre','Jorge Mario Madina','Tema: Aprendizaje interactivo: diseño de juegos educativos con eXeLearning. Recursos y juegos educativos interactivos para crear contenidos digitales que apoyen la comprensión de conceptos y la participación de los estudiantes.'],
- ['5:00 p. m.','Despedida y cierre','','Agradecimiento a conferencistas, talleristas, organizadores y participantes, con una síntesis de los principales aprendizajes de la jornada.']
+/* ambient */
+var AMB={0:'r',1:'r',2:'r',3:'r',4:'r',5:'g',6:'g',7:'g',8:'g',9:'g',10:'g',11:'g',12:'f',13:'f',14:'f',15:'f',16:'f',17:'f',18:'f',19:'b',20:'r'};
+var EM={r:['🔗','🤝','📚','💡','🌿'],g:['🎮','🧩','⭐','🎲','🏆','🕹️'],f:['📚','☕','🍃','📖','🌿','☕'],b:['📖','📚','📦','✉️','🏛️']};
+slides.forEach(function(s,i){var c=document.createElement('div');c.className='amb';var l=EM[AMB[i]]||EM.r;for(var k=0;k<9;k++){var p=document.createElement('span');p.textContent=l[k%l.length];p.style.left=(4+Math.random()*92)+'%';p.style.fontSize=(22+Math.random()*22)+'px';p.style.animationDuration=(16+Math.random()*14)+'s';p.style.animationDelay=(-Math.random()*26)+'s';p.style.setProperty('--rot',(Math.random()*120-60)+'deg');c.appendChild(p)}s.insertBefore(c,s.firstChild)});
+
+/* plan: gantt */
+var P=[
+ {n:'Solución integral de préstamo interbibliotecario',d:'Mayo – julio',b:[[2,5]],o:'Diseñar e implementar un sistema automatizado para gestionar el préstamo interbibliotecario, optimizando procesos, garantizando trazabilidad y mejorando la experiencia de los usuarios.',i:'Número de actividades o entregables ejecutados / número total de actividades o entregables programados.'},
+ {n:'Jornadas de formación conjunta con Asouniesca, Rebime y Embies',d:'Abril – mayo / agosto – noviembre',b:[[1,3],[5,9]],o:'Fortalecer las competencias del personal bibliotecario y la comunidad académica mediante un programa articulado de formación.',i:'Número de actividades ejecutadas / número total de actividades programadas.'},
+ {n:'Participación en la Feria del Libro de Pereira',d:'Octubre (programada)',b:[[7,8]],o:'Participar activamente en la programación de la Feria del Libro de Pereira, promoviendo la cultura, la lectura y el intercambio de saberes.',i:'Número de actividades ejecutadas / número total de actividades programadas.'},
+ {n:'III Foro de Bibliotecas REUNIR (gamificación)',d:'Agosto (programado)',b:[[5,6]],o:'Fortalecer el intercambio de conocimientos y buenas prácticas entre las bibliotecas de la red, con un foro que incorpore estrategias de gamificación.',i:'Foro realizado / foro programado.'},
+ {n:'Diagnóstico de recursos y capacidades bibliotecarias – 2025',d:'Junio – julio',b:[[3,5]],o:'Realizar un diagnóstico integral de los recursos y capacidades bibliotecarias para identificar fortalezas, necesidades y oportunidades de mejora.',i:'Diagnósticos realizados por institución / diagnóstico planteado.'}
 ];
-var tl=qs('#tl'),det=qs('#det');
-AG.forEach(function(a,i){var b=document.createElement('button');b.innerHTML='<span class="t">'+a[0]+'</span><span class="n">'+a[1]+'</span>';b.onclick=function(){sel(i)};tl.appendChild(b)});
-function sel(i){qa('button',tl).forEach(function(b,j){b.classList.toggle('on',i===j)});var a=AG[i];det.classList.remove('sw');void det.offsetWidth;det.classList.add('sw');
- det.innerHTML='<div class="tm">'+a[0]+'</div><h3>'+a[1]+'</h3>'+(a[2]?'<div><span class="who">🎤 '+a[2]+'</span></div>':'')+'<p>'+a[3]+'</p>'}
-sel(0);var ai=0;slides[9].onshow=function(){sel(0)};
+var gr=qs('#gantt'),gd=qs('#gdet'),pi=0;
+P.forEach(function(p,k){var r=document.createElement('div');r.className='gr';r.innerHTML='<div class="gl"><i>'+(k+1)+'</i><span>'+p.n+'</span></div><div class="gt">'+p.b.map(function(x){return '<u style="grid-column:'+x[0]+'/'+x[1]+';--d:'+(k*.12)+'"></u>'}).join('')+'</div>';r.onclick=function(){stopAuto();selP(k)};gr.appendChild(r)});
+function selP(k){pi=k;qa('.gr',gr).forEach(function(r,j){r.classList.toggle('on',j===k)});var p=P[k];gd.classList.remove('sw');void gd.offsetWidth;gd.classList.add('sw');
+ gd.innerHTML='<div><small>Actividad '+(k+1)+'</small><h3>'+p.n+'</h3><span class="pill g">📅 '+p.d+'</span></div><div><small>Objetivo</small><p>'+p.o+'</p></div><div><small>Indicador de cumplimiento</small><p>'+p.i+'</p></div>'}
+selP(0);slides[2].onshow=function(){selP(0);tm=setInterval(function(){selP((pi+1)%P.length)},4500)};
+
+/* foro: niveles */
+var Q=[
+ ['🎤','Apertura','Bienvenida','','Recepción, registro y presentación del evento para contextualizar la importancia de la gamificación en la educación.'],
+ ['⚖️','Ética y moral','Gamificar desde la ética y la moral','Mauricio Alexander Moreno Cano','Conferencia inaugural sobre el uso responsable del juego, la motivación y las herramientas pedagógicas.'],
+ ['🧩','Taller','Taller con Tech Learning','Lisandro Navarro','Estrategias y herramientas para diseñar actividades de aprendizaje más dinámicas y participativas.'],
+ ['🛍️','Stands','Visita a los stands de proveedores','','Espacio para explorar materiales y recursos físicos educativos e intercambiar ideas entre asistentes.'],
+ ['🎮','Gameproof','Programa tu propia aventura','Kadier Torres Molina','Recorridos, retos y actividades interactivas diseñadas con Gameproof.'],
+ ['🏆','eXeLearning','Aprendizaje interactivo','Jorge Mario Madina','Juegos y recursos educativos con eXeLearning, y cierre del evento con los principales aprendizajes.']
+];
+var pth=qs('#path'),qd=qs('#qd'),qi=0;
+Q.forEach(function(q,k){var b=document.createElement('button');b.className='nd';b.innerHTML='<span class="ni">'+q[0]+'</span><small>'+q[1]+'</small>';b.onclick=function(){stopAuto();selQ(k)};pth.appendChild(b)});
+function selQ(k){qi=k;qa('.nd',pth).forEach(function(b,j){b.classList.toggle('on',j===k);b.classList.toggle('done',j<k)});
+ qs('#plf').style.width=(k/(Q.length-1)*100)+'%';qs('#xpf').style.width=((k+1)/Q.length*100)+'%';qs('#xpl').textContent='Nivel '+(k+1)+'/'+Q.length;
+ var q=Q[k];qd.classList.remove('sw');void qd.offsetWidth;qd.classList.add('sw');
+ qd.innerHTML='<div class="bg">'+q[0]+'</div><div><small>Nivel '+(k+1)+'</small><h3>'+q[2]+'</h3>'+(q[3]?'<div class="who">🎤 '+q[3]+'</div>':'')+'<p>'+q[4]+'</p></div>'}
+selQ(0);slides[9].onshow=function(){selQ(0);tm=setInterval(function(){selQ((qi+1)%Q.length)},4500)};
+
+/* viaje del libro: presentación embebida */
+var ILL='https://bibliotecas-areandina.github.io/reunir-ill-system/presentacion/#1',ill=qs('#ill'),vm=qs('#vm');
+slides[19].onshow=function(){if(!ill.getAttribute('src'))ill.src=ILL};
+qs('#bigv').onclick=function(){qs('iframe',vm).src=ILL;vm.classList.add('on')};
+qs('#vmc').onclick=function(){vm.classList.remove('on');qs('iframe',vm).src='about:blank'};
+if(isPrint){selQ(5);selP(0)}
+
 
 /* programacion */
 var D=[
