@@ -281,6 +281,7 @@ body.print .bv iframe{display:none}
 .av.ph{background:url(img/foro4.jpg) -10px -7px/268px 95px no-repeat;color:transparent;cursor:zoom-in;box-shadow:0 0 0 4px #5DB82E}
 .ev3{position:relative;height:560px}
 .pola .pc{font-size:12px;font-weight:700;text-align:center;padding:7px 0 2px;color:var(--soft)}
+.team{display:flex;flex-direction:column;gap:10px;margin-top:18px}.team .card{display:flex;gap:14px;align-items:center;padding:10px 16px}.team .av{width:50px;height:50px;font-size:20px;margin:0;flex:none}.team h3{font-size:16px;margin:0}.team p{font-size:13px}
 </style>
 </head>
 <body>
@@ -649,6 +650,26 @@ body.print .bv iframe{display:none}
   </div>
 </section>
 
+<!-- 21b EQUIPO -->
+<section class="slide alt" data-t="Equipo REUNIR 2026">
+  <div class="two" style="grid-template-columns:.9fr 1.1fr;height:100%;align-items:center;gap:34px">
+    <div>
+      <div class="kicker a">Las personas detrás del informe</div>
+      <h2 class="a" style="--d:.1;font-size:46px">Equipo <em>REUNIR 2026</em></h2>
+      <p class="lead a" style="--d:.25;font-size:17px;margin-top:10px">Bibliotecarios y bibliotecarias de las instituciones de la red que hicieron posible cada encuentro, foro y proyecto de este año.</p>
+      <div class="team">
+        <div class="card a l" style="--d:.4"><div class="av g">N</div><div><h3>Nelly Herrera Vargas</h3><p>Coordinación de Red de Bibliotecas · desde el 21 de mayo</p></div></div>
+        <div class="card a l" style="--d:.55"><div class="av">Y</div><div><h3>Yudi Magerly Ariza</h3><p>Coordinación de la mesa · febrero – abril 2026</p></div></div>
+        <div class="card a l" style="--d:.7"><div class="av g">A</div><div><h3>Alejandro Labrada Jiménez</h3><p>Analista Biblioteca Areandina · diseño del sistema “El viaje del libro”</p></div></div>
+      </div>
+    </div>
+    <div class="polas" style="height:520px">
+      <div class="pola a z" style="--d:.4;--r:-3deg;left:10px;top:10px"><img data-z data-g="eq" src="img/n8.png" width="470" height="330" style="object-fit:cover" alt="Equipo REUNIR"></div>
+      <div class="pola a z" style="--d:.65;--r:4deg;left:160px;top:280px"><img data-z data-g="eq" src="img/n12.png" width="400" height="265" style="object-fit:cover" alt="Equipo REUNIR en biblioteca"></div>
+    </div>
+  </div>
+</section>
+
 <!-- 21 CIERRE -->
 <section class="slide" data-t="Gracias">
   <div style="text-align:center;padding-top:34px">
@@ -727,7 +748,7 @@ qa('#tog button').forEach(function(b){b.onclick=function(){per=+b.dataset.p;qa('
 if(isPrint){per=1;setRings();qa('.ring .fg',rg).forEach(function(f){f.style.transition='none'});qa('.ring .pc span',rg).forEach(function(s,i){s.textContent=R[i].p[1]})}
 
 /* ambient */
-var AMB={0:'r',1:'r',2:'r',3:'r',4:'r',5:'r',6:'g',7:'g',8:'g',9:'g',10:'g',11:'g',12:'g',13:'g',14:'f',15:'f',16:'f',17:'f',18:'f',19:'f',20:'f',21:'b',22:'r'};
+var AMB={0:'r',1:'r',2:'r',3:'r',4:'r',5:'r',6:'g',7:'g',8:'g',9:'g',10:'g',11:'g',12:'g',13:'g',14:'f',15:'f',16:'f',17:'f',18:'f',19:'f',20:'f',21:'b',22:'r',23:'r'};
 var EM={r:['🔗','🤝','📚','💡','🌿'],g:['🎮','🧩','⭐','🎲','🏆','🕹️'],f:['📚','☕','🍃','📖','🌿','☕'],b:['📖','📚','📦','✉️','🏛️']};
 slides.forEach(function(s,i){var c=document.createElement('div');c.className='amb';var l=EM[AMB[i]]||EM.r;for(var k=0;k<9;k++){var p=document.createElement('span');p.textContent=l[k%l.length];p.style.left=(4+Math.random()*92)+'%';p.style.fontSize=(22+Math.random()*22)+'px';p.style.animationDuration=(16+Math.random()*14)+'s';p.style.animationDelay=(-Math.random()*26)+'s';p.style.setProperty('--rot',(Math.random()*120-60)+'deg');c.appendChild(p)}s.insertBefore(c,s.firstChild)});
 
