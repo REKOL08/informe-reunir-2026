@@ -268,6 +268,16 @@ body.print .bv iframe{display:none}
 #vm.on{display:flex}
 #vm iframe{width:92vw;height:86vh;border:0;border-radius:12px;background:#fff}
 #vmc{position:absolute;top:14px;right:18px;width:42px;height:42px;border-radius:50%;border:0;font-size:18px;cursor:pointer;background:#fff;color:var(--mag)}
+.chip.pv{background:var(--greenl);border-color:#cfe3bf;color:var(--dgreen)}
+.cap-box{display:grid;grid-template-columns:1fr 1fr;gap:16px;min-height:430px;align-content:start}
+.cap-box .ct{grid-column:1/-1;background:#fff;border-radius:18px;padding:14px 20px;box-shadow:0 8px 22px rgba(47,107,26,.1);animation:sw .45s ease}
+.cap-box .ct small{font-family:var(--head);font-weight:500;letter-spacing:.12em;text-transform:uppercase;font-size:12px;color:var(--mag)}
+.cap-box .ct h3{font-size:19px;margin:3px 0 4px;line-height:1.2}
+.cap-box .ct p{font-size:14px;line-height:1.4;color:var(--soft)}
+.cap-box .frame{height:236px;animation:sw .6s ease}
+.cap-box .frame.full{grid-column:1/-1;height:236px}
+.days button small{display:block;font-size:11px;font-weight:600;color:var(--soft)}
+.days button.on small{color:#e4f1d8}
 </style>
 </head>
 <body>
@@ -295,11 +305,11 @@ body.print .bv iframe{display:none}
   <p class="lead a" style="--d:.2">Haz clic en cualquier tarjeta para saltar a ese momento del año.</p>
   <div class="toc">
     <div class="card a" style="--d:.3" data-go="2"><b>01</b><div><h3>Plan de acción 2026</h3><p>Actividades, avance y mesa responsable.</p></div></div>
-    <div class="card a" style="--d:.4" data-go="4"><b>02</b><div><h3>Nueva coordinación</h3><p>21 de mayo: relevo de Coordinación y Secretaría.</p></div></div>
-    <div class="card a" style="--d:.5" data-go="5"><b>03</b><div><h3>III Foro de Gamificación</h3><p>Pereira · agenda, ponentes y asistentes.</p></div></div>
-    <div class="card a" style="--d:.6" data-go="12"><b>04</b><div><h3>Feria del Libro de Pereira</h3><p>Piezas, stand, programación y resultados.</p></div></div>
-    <div class="card a" style="--d:.7" data-go="18"><b>05</b><div><h3>Paisaje, Café y Libro</h3><p>Cifras de la feria con la Cámara de Comercio.</p></div></div>
-    <div class="card a" style="--d:.8" data-go="19"><b>06</b><div><h3>Préstamo interbibliotecario</h3><p>El sistema que conecta a la Red REUNIR.</p></div></div>
+    <div class="card a" style="--d:.4" data-go="4"><b>02</b><div><h3>Coordinación y capacitaciones</h3><p>Relevo del 21 de mayo, reuniones y sesiones de formación.</p></div></div>
+    <div class="card a" style="--d:.5" data-go="6"><b>03</b><div><h3>III Foro de Gamificación</h3><p>Pereira · agenda, ponentes y asistentes.</p></div></div>
+    <div class="card a" style="--d:.6" data-go="13"><b>04</b><div><h3>Feria del Libro de Pereira</h3><p>Piezas, stand, programación y resultados.</p></div></div>
+    <div class="card a" style="--d:.7" data-go="19"><b>05</b><div><h3>Paisaje, Café y Libro</h3><p>Cifras de la feria con la Cámara de Comercio.</p></div></div>
+    <div class="card a" style="--d:.8" data-go="20"><b>06</b><div><h3>Préstamo interbibliotecario</h3><p>El sistema que conecta a la Red REUNIR.</p></div></div>
   </div>
 </section>
 
@@ -335,18 +345,37 @@ body.print .bv iframe{display:none}
 
 <!-- 5 NUEVA COORDINACION -->
 <section class="slide" data-t="Nueva coordinación">
-  <div class="two" style="grid-template-columns:.8fr 1.2fr;height:100%;align-items:center">
+  <div class="two" style="grid-template-columns:.85fr 1.15fr;height:100%;align-items:center">
     <div>
-      <div class="kicker a">21 de mayo · relevo</div>
-      <h2 class="a" style="--d:.1;font-size:46px">Nueva <em>Coordinación</em> y Secretaría REUNIR</h2>
-      <p class="lead a" style="--d:.3;margin-top:14px">El <b>21 de mayo</b> se asume la nueva Coordinación y Secretario de REUNIR. La red reconoce con certificado el liderazgo, compromiso y capacidad para fortalecer el trabajo colaborativo, el acceso a la información y el desarrollo de nuestras comunidades.</p>
-      <div style="margin-top:22px;display:flex;flex-direction:column;gap:10px;align-items:flex-start" class="a"><span class="pill g">Nelly Herrera Vargas</span><span class="pill w">Coordinación de Red de Bibliotecas</span></div>
+      <div class="kicker a">21 de mayo de 2026 · relevo</div>
+      <h2 class="a" style="--d:.1;font-size:42px">Nueva <em>Coordinación</em> y Secretaría REUNIR</h2>
+      <p class="lead a" style="--d:.3;margin-top:12px;font-size:17px">Se asume la nueva Coordinación y Secretario de REUNIR, y la red reconoce con certificado el liderazgo y compromiso para fortalecer el trabajo colaborativo y el acceso a la información.</p>
+      <div class="card a" style="--d:.45;margin-top:16px;padding:14px 18px"><div class="kicker" style="font-size:12px">Reconocimientos de gestión</div><p style="margin-top:6px"><b>Adriana Patricia Oyuela López</b> · 2020 – 2024<br><b>Yudi Magerly Ariza</b> · 2025 – 2026</p></div>
+      <div style="margin-top:16px" class="a"><span class="pill g">Nelly Herrera Vargas · Coordinación de Red de Bibliotecas</span></div>
     </div>
     <div class="polas">
-      <div class="pola a z" style="--d:.3;--r:-5deg;left:0;top:20px"><img data-z data-g="co" src="img/i3.png" width="250" height="330" alt="Entrega de certificados"></div>
-      <div class="pola a z" style="--d:.5;--r:4deg;left:250px;top:0"><img data-z data-g="co" src="img/i5.png" width="300" height="225" alt="Certificado de coordinación"></div>
-      <div class="pola a z" style="--d:.7;--r:-3deg;left:90px;top:290px"><img data-z data-g="co" src="img/i4.png" width="290" height="180" alt="Encuentro REUNIR"></div>
-      <div class="pola a z" style="--d:.9;--r:5deg;left:380px;top:250px"><img data-z data-g="co" src="img/i6.png" width="250" height="210" alt="Equipo REUNIR"></div>
+      <div class="pola a z" style="--d:.3;--r:-5deg;left:0;top:20px"><img data-z data-g="co" src="img/i3.png" width="230" height="300" alt="Entrega de certificados"></div>
+      <div class="pola a z" style="--d:.5;--r:4deg;left:235px;top:0"><img data-z data-g="co" src="img/i5.png" width="300" height="225" alt="Certificado de coordinación"></div>
+      <div class="pola a z" style="--d:.7;--r:-3deg;left:70px;top:300px"><img data-z data-g="co" src="img/n5.png" width="170" height="210" alt="Reconocimiento a Adriana López Oyuela" style="object-position:center"></div>
+      <div class="pola a z" style="--d:.9;--r:5deg;left:290px;top:262px"><img data-z data-g="co" src="img/i4.png" width="290" height="190" alt="Encuentro REUNIR"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5b ENCUENTROS Y CAPACITACIONES -->
+<section class="slide alt" data-t="Encuentros y capacitaciones">
+  <div class="kicker a">Gestión de la red en 2026</div>
+  <h2 class="a" style="--d:.1;font-size:40px">Encuentros y <em>capacitaciones</em></h2>
+  <div class="two" style="grid-template-columns:330px 1fr;gap:28px;margin-top:14px;align-items:start">
+    <div>
+      <div class="card a l" style="--d:.2;padding:16px 20px"><div style="display:flex;gap:18px;align-items:center"><div class="counter" style="font-size:54px">4</div><p style="font-size:14.5px"><b>reuniones presenciales</b></p></div><div style="display:flex;gap:18px;align-items:center;margin-top:8px"><div class="counter" style="font-size:54px;color:var(--dgreen)">2</div><p style="font-size:14.5px"><b>reuniones virtuales</b><br>marzo y septiembre de 2026</p></div></div>
+      <div class="frame a z" style="--d:.4;margin-top:14px;height:210px"><img data-z data-g="enc" src="img/n6.png" alt="Reunión presencial REUNIR"></div>
+      <p class="cap">Reunión presencial de la red</p>
+      <div class="card a" style="--d:.55;margin-top:10px;padding:12px 16px"><p style="font-size:13.5px">En cada sesión se avanzó en la gestión del <b>III Foro REUNIR</b>: ponentes y temas, logística, lugar, fechas, editoriales invitadas e inscripción.</p></div>
+    </div>
+    <div>
+      <div class="days a" style="--d:.3;margin:0 0 12px" id="mes"></div>
+      <div class="cap-box" id="cap"></div>
     </div>
   </div>
 </section>
@@ -452,6 +481,8 @@ body.print .bv iframe{display:none}
         <span class="chip a z" style="--d:.6">Agenda impresa o digital</span><span class="chip a z" style="--d:.65">Formatos de asistencia y evaluación</span>
         <span class="chip a z" style="--d:.7">Señalización de espacios</span>
       </div>
+      <div class="kicker a" style="--d:.8;margin-top:22px">Proveedores asistentes a los stands</div>
+      <div class="chips" style="margin-top:10px"><span class="chip pv a z" style="--d:.85">Amolca</span><span class="chip pv a z" style="--d:.9">El Bibliotecólogo</span><span class="chip pv a z" style="--d:.95">Ecoe Ediciones</span><span class="chip pv a z" style="--d:1">Temis</span><span class="chip pv a z" style="--d:1.05">Tech Learning</span><span class="chip pv a z" style="--d:1.1">Ediciones Modernas</span><span class="chip pv a z" style="--d:1.15">Kitoblar</span><span class="chip pv a z" style="--d:1.2">Ediciones de la U</span><span class="chip pv a z" style="--d:1.25">Libromante</span><span class="chip pv a z" style="--d:1.3">Distrididáctica</span></div>
     </div>
     <div class="card a z" style="--d:.5;text-align:center;padding:40px 28px">
       <div class="kicker">Total de asistentes</div>
@@ -675,7 +706,7 @@ qa('#tog button').forEach(function(b){b.onclick=function(){per=+b.dataset.p;qa('
 if(isPrint){per=1;setRings();qa('.ring .fg',rg).forEach(function(f){f.style.transition='none'});qa('.ring .pc span',rg).forEach(function(s,i){s.textContent=R[i].p[1]})}
 
 /* ambient */
-var AMB={0:'r',1:'r',2:'r',3:'r',4:'r',5:'g',6:'g',7:'g',8:'g',9:'g',10:'g',11:'g',12:'f',13:'f',14:'f',15:'f',16:'f',17:'f',18:'f',19:'b',20:'r'};
+var AMB={0:'r',1:'r',2:'r',3:'r',4:'r',5:'r',6:'g',7:'g',8:'g',9:'g',10:'g',11:'g',12:'g',13:'f',14:'f',15:'f',16:'f',17:'f',18:'f',19:'f',20:'b',21:'r'};
 var EM={r:['🔗','🤝','📚','💡','🌿'],g:['🎮','🧩','⭐','🎲','🏆','🕹️'],f:['📚','☕','🍃','📖','🌿','☕'],b:['📖','📚','📦','✉️','🏛️']};
 slides.forEach(function(s,i){var c=document.createElement('div');c.className='amb';var l=EM[AMB[i]]||EM.r;for(var k=0;k<9;k++){var p=document.createElement('span');p.textContent=l[k%l.length];p.style.left=(4+Math.random()*92)+'%';p.style.fontSize=(22+Math.random()*22)+'px';p.style.animationDuration=(16+Math.random()*14)+'s';p.style.animationDelay=(-Math.random()*26)+'s';p.style.setProperty('--rot',(Math.random()*120-60)+'deg');c.appendChild(p)}s.insertBefore(c,s.firstChild)});
 
@@ -708,14 +739,28 @@ function selQ(k){qi=k;qa('.nd',pth).forEach(function(b,j){b.classList.toggle('on
  qs('#plf').style.width=(k/(Q.length-1)*100)+'%';qs('#xpf').style.width=((k+1)/Q.length*100)+'%';qs('#xpl').textContent='Nivel '+(k+1)+'/'+Q.length;
  var q=Q[k];qd.classList.remove('sw');void qd.offsetWidth;qd.classList.add('sw');
  qd.innerHTML='<div class="bg">'+q[0]+'</div><div><small>Nivel '+(k+1)+'</small><h3>'+q[2]+'</h3>'+(q[3]?'<div class="who">🎤 '+q[3]+'</div>':'')+'<p>'+q[4]+'</p></div>'}
-selQ(0);slides[9].onshow=function(){selQ(0);tm=setInterval(function(){selQ((qi+1)%Q.length)},4500)};
+selQ(0);slides[10].onshow=function(){selQ(0);tm=setInterval(function(){selQ((qi+1)%Q.length)},4500)};
+
+/* capacitaciones por mes */
+var M=[
+ {m:'Abril',u:'Universidad Católica de Pereira',t:'Capacitación en Inteligencia Artificial',im:['n7','n8']},
+ {m:'Mayo',u:'Fundación Universitaria del Área Andina',t:'Experiencia en Apropia (apropiación de la Inteligencia Artificial) desde las bibliotecas de la Fundación Universitaria del Área Andina, abordaje desde la biblioteca digital · Alejandro Labrada Jiménez, Analista de Biblioteca',im:['n9','n10']},
+ {m:'Junio',u:'Universidad Tecnológica de Pereira',t:'Construcción de un CRIS: optimizando el repositorio institucional con DSpace, perfiles ORCID, OpenAlex y Google Scholar · Experto Nelson Mauricio Cantor',im:['n11','n12']},
+ {m:'Julio',u:'SENA Centro',t:'Uso de herramientas de IA generativa en el ámbito académico',im:['n13']}
+];
+var mes=qs('#mes'),cap=qs('#cap');
+M.forEach(function(x,k){var b=document.createElement('button');b.innerHTML=x.m.slice(0,3)+'<b>'+(k+4)+'</b>';b.title=x.m;b.onclick=function(){stopAuto();selM(k)};mes.appendChild(b)});
+var mi=0;
+function selM(k){mi=k;qa('button',mes).forEach(function(b,j){b.classList.toggle('on',j===k)});var x=M[k];
+ cap.innerHTML='<div class="ct"><small>Mes de '+x.m+' · '+x.u+'</small><h3>'+x.t+'</h3></div>'+x.im.map(function(n,q){return '<div class="frame'+(x.im.length===1?' full':'')+'"><img data-z data-g="cap'+k+'" src="img/'+n+'.png" alt="'+x.m+'"></div>'}).join('')}
+selM(0);slides[5].onshow=function(){selM(0);tm=setInterval(function(){selM((mi+1)%M.length)},5000)};
 
 /* viaje del libro: presentación embebida */
 var ILL='https://bibliotecas-areandina.github.io/reunir-ill-system/presentacion/#1',ill=qs('#ill'),vm=qs('#vm');
-slides[19].onshow=function(){if(!ill.getAttribute('src'))ill.src=ILL};
+slides[20].onshow=function(){if(!ill.getAttribute('src'))ill.src=ILL};
 qs('#bigv').onclick=function(){qs('iframe',vm).src=ILL;vm.classList.add('on')};
 qs('#vmc').onclick=function(){vm.classList.remove('on');qs('iframe',vm).src='about:blank'};
-if(isPrint){selQ(5);selP(0)}
+if(isPrint){selQ(5);selP(0);cap.style.gridTemplateColumns='repeat(4,1fr)';cap.innerHTML=M.map(function(x){return '<div class="ct" style="grid-column:span 2;padding:8px 14px"><small>'+x.m+' · '+x.u+'</small><h3 style="font-size:13px">'+x.t.split(' · ')[0].slice(0,110)+'</h3></div>'+x.im.map(function(n){return '<div class="frame" style="height:96px;grid-column:span '+(x.im.length===1?2:1)+'"><img src="img/'+n+'.png"></div>'}).join('')}).join('');}
 
 
 /* programacion */
