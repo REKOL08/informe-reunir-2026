@@ -96,12 +96,12 @@ img[data-z]{cursor:zoom-in}
 .act h3{font-size:15.5px;margin-bottom:3px;line-height:1.2}.act small{font-size:13px;color:var(--mag);font-weight:700}
 .rings{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:18px}
 .ring{text-align:center;padding:16px 12px 14px}
-.ring svg{width:112px;height:112px;transform:rotate(-90deg)}
+.ring svg{width:100px;height:100px;transform:rotate(-90deg)}
 .ring .bg{fill:none;stroke:#e6eddf;stroke-width:11}
 .ring .fg{fill:none;stroke:var(--pink);stroke-width:11;stroke-linecap:round;stroke-dasharray:326.7;stroke-dashoffset:326.7;transition:stroke-dashoffset 1.4s cubic-bezier(.2,.8,.2,1),stroke .6s}
-.ring .pc{margin-top:-78px;height:78px;font-family:var(--head);font-weight:700;font-size:24px;display:grid;place-items:center}.ring .pc b{font-weight:700}
-.ring h3{font-size:14.5px;margin-top:6px;min-height:52px;line-height:1.2}
-.ring p{font-size:12.5px;line-height:1.35;min-height:92px;color:var(--soft);margin-top:6px}
+.ring .pc{margin-top:-70px;height:70px;font-family:var(--head);font-weight:700;font-size:24px;display:grid;place-items:center}.ring .pc b{font-weight:700}
+.ring h3{font-size:14px;margin-top:4px;min-height:50px;line-height:1.2}
+.ring p{font-size:12px;line-height:1.35;min-height:100px;color:var(--soft);margin-top:6px}
 .tog{display:inline-flex;background:#fff;border-radius:30px;padding:5px;box-shadow:0 4px 14px rgba(0,0,0,.08)}
 .tog button{border:0;background:transparent;font-family:var(--head);font-weight:500;padding:9px 22px;border-radius:24px;cursor:pointer;color:var(--soft);font-size:14px;transition:.25s}
 .tog button.on{background:var(--mag);color:#fff}
@@ -283,6 +283,20 @@ body.print .bv iframe{display:none}
 .pola .pc{font-size:12px;font-weight:700;text-align:center;padding:7px 0 2px;color:var(--soft)}
 .team{display:flex;flex-direction:column;gap:10px;margin-top:18px}.team .card{display:flex;gap:14px;align-items:center;padding:10px 16px}.team .av{width:50px;height:50px;font-size:20px;margin:0;flex:none}.team h3{font-size:16px;margin:0}.team p{font-size:13px}
 .eqs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:16px;align-items:start}.eq{padding:16px 16px 10px}.eh{display:flex;align-items:center;gap:10px;margin-bottom:10px}.eh span{font-size:26px}.eh h3{font-size:22px;flex:1;color:var(--mag);margin:0}.eh i{font-style:normal;font-family:var(--head);background:var(--greenl);color:var(--dgreen);width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:14px}.mem{display:flex;gap:12px;align-items:center;padding:8px 0;border-top:1px solid #e3eedb}.mem .av{width:42px;height:42px;font-size:17px;margin:0;flex:none}.mem b{display:block;font-size:14.5px;font-family:var(--head);font-weight:500;line-height:1.2}.mem small{display:block;font-size:12px;color:var(--soft);line-height:1.25;margin-top:2px}
+.dl{margin-top:8px;border-top:1px solid #e3eedb;padding-top:8px}
+.dr{display:grid;grid-template-columns:28px 1fr 38px;gap:6px;align-items:center;font-size:11.5px;font-weight:700;color:var(--soft);margin-bottom:5px}
+.dr b{text-align:right;font-family:var(--head);color:var(--ink)}
+.tk{height:8px;border-radius:6px;background:#e6eddf;overflow:hidden}
+.tk u{display:block;height:100%;width:0;border-radius:6px;background:#a9c98d;transition:width 1.3s cubic-bezier(.2,.8,.2,1) .9s}
+.dr.n .tk u{background:linear-gradient(90deg,var(--pink),var(--mag))}
+.slide.on .tk u{width:var(--w)}
+body.print .tk u{width:var(--w);transition:none}
+.dp{margin-top:6px;display:inline-block;background:var(--greenl);color:var(--dgreen);border-radius:12px;padding:3px 10px;font-size:12px;font-weight:700}
+.dp.z{background:#eef0ea;color:var(--soft)}
+.sumr{display:flex;align-items:center;gap:22px;margin-top:12px;padding:12px 22px;background:rgba(255,253,249,.92);border:1px solid #e3eedb;border-radius:20px}
+.sm small{display:block;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--soft)}
+.sm b{font-family:var(--head);font-size:30px;color:var(--mag);line-height:1.1}
+.sm.hi b{color:var(--dgreen)}.sa{font-size:26px;color:var(--pink)}
 </style>
 </head>
 <body>
@@ -342,9 +356,13 @@ body.print .bv iframe{display:none}
     <div class="tog a" style="--d:.3" id="tog"><button class="on" data-p="0">Junio 2026</button><button data-p="1">Noviembre 2026</button></div>
   </div>
   <div class="rings" id="rings"></div>
-  <div style="display:flex;align-items:center;gap:18px;margin-top:14px" class="a" style="--d:1">
-    <div class="frame" style="width:210px;height:100px;flex:none"><img src="img/i2.png" data-z data-g="dev" alt="Captura del seguimiento"></div>
-    <p class="lead" style="font-size:15px">Fuente: captura del seguimiento del plan de acción (clic para ampliar). Alternando entre <b>junio</b> y <b>noviembre</b> se ve cómo avanzó cada actividad de la mesa.</p>
+  <div class="sumr a" style="--d:1">
+    <div class="sm"><small>Promedio junio</small><b><span class="count" data-to="55">0</span>%</b></div>
+    <div class="sa">→</div>
+    <div class="sm hi"><small>Promedio noviembre</small><b><span class="count" data-to="76">0</span>%</b></div>
+    <div class="sm"><small>Actividades al 100 %</small><b><span class="count" data-to="3">0</span> de 5</b></div>
+    <div class="sm"><small>Avance del año</small><b>+<span class="count" data-to="21">0</span> pts</b></div>
+    <div class="frame" style="width:150px;height:70px;flex:none;margin-left:auto"><img src="img/i2.png" data-z data-g="dev" alt="Captura del seguimiento"></div>
   </div>
 </section>
 
@@ -741,14 +759,14 @@ lb.onclick=function(e){if(e.target===lb||e.target===lbi)closeLB()};qs('#lbp').on
 /* rings */
 var R=[
  {n:'Solución integral de préstamo interbibliotecario',p:[95,100],t:['Se diseñó el formato por parte del Analista de Biblioteca Areandina, Alejandro Labrada Jiménez, en tiempo récord de un mes y se fortaleció con la revisión del equipo REUNIR.','Se identificó el flujo y se conectó todo en una consola de Apps Script, con trazabilidad, usando Gmail, Calendar y formularios.']},
- {n:'Jornadas de formación conjunta con otras redes',p:[30,30],t:['Dificultades para generar capacitaciones y ofrecerlas en la programación que se deseaba tener.','Poca participación en este ítem por el trabajo con otras redes; se realizaron 4 capacitaciones a nivel REUNIR en las sesiones de reuniones.']},
+ {n:'Jornadas de formación conjunta con otras redes',p:[30,70],t:['Dificultades para generar capacitaciones y ofrecerlas en la programación que se deseaba tener.','Jornadas con Manizales, UCC y Libre, y con las redes que invitaron a formación: REUNIR, Cognos y Publiciencia. Se suman los enlaces de formación de proveedores.']},
  {n:'Participación en la Feria del Libro de Pereira',p:[70,100],t:['El terremoto del pasado 10 de agosto cambió la dinámica de la Feria y obligó a reprogramarla.','Se logró desarrollar del 5 al 9 de noviembre de 2026: 8 actividades de las diferentes instituciones, con lanzamientos de libros y conversatorios, y 561 asistentes.']},
  {n:'III Foro de Bibliotecas REUNIR (gamificación)',p:[70,100],t:['El terremoto del pasado 10 de agosto cambió la dinámica y obligó a reprogramar el foro.','Se realizó la reprogramación del tercer foro de REUNIR en el tema de Gamificación, el 7 de octubre de 2026.']},
  {n:'Diagnóstico de recursos y capacidades bibliotecarias – 2025',p:[10,10],t:['Avance inicial del diagnóstico.','No se logró más avance de este diagnóstico.']}
 ];
 var rg=qs('#rings'),per=0;
 R.forEach(function(r,i){var c=document.createElement('div');c.className='card ring a z';c.style.setProperty('--d',(.35+i*.12));
- c.innerHTML='<svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52"/><circle class="fg" cx="60" cy="60" r="52"/></svg><div class="pc"><b><span>0</span>%</b></div><h3>'+r.n+'</h3><p></p>';rg.appendChild(c)});
+ c.innerHTML='<svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52"/><circle class="fg" cx="60" cy="60" r="52"/></svg><div class="pc"><b><span>0</span>%</b></div><h3>'+r.n+'</h3><p></p><div class="dl"><div class="dr"><span>Jun</span><div class="tk"><u style="--w:'+r.p[0]+'%"></u></div><b>'+r.p[0]+'%</b></div><div class="dr n"><span>Nov</span><div class="tk"><u style="--w:'+r.p[1]+'%"></u></div><b>'+r.p[1]+'%</b></div><div class="dp'+(r.p[1]>r.p[0]?'':' z')+'">'+(r.p[1]>r.p[0]?'▲ +'+(r.p[1]-r.p[0])+' pts':'sin cambio')+'</div></div>';rg.appendChild(c)});
 function setRings(first){qa('.ring',rg).forEach(function(c,i){var v=R[i].p[per],fg=qs('.fg',c);fg.style.strokeDashoffset=(326.7*(1-v/100)).toFixed(1);fg.style.stroke=v>=100?'var(--pink)':(v>=50?'#8cc63f':(v>=30?'#b7d98a':'#c9dfae'));
   var s=qs('.pc span',c),from=+s.textContent,t0=null;if(isPrint){s.textContent=v;qs('p',c).textContent=R[i].t[per];return}(function st(t){if(!t0)t0=t;var k=Math.min(1,(t-t0)/1200);s.textContent=Math.round(from+(v-from)*k);if(k<1)requestAnimationFrame(st)})(performance.now());
   qs('p',c).textContent=R[i].t[per]})}
